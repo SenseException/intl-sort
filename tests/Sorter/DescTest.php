@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Budgegeria\IntlSort\Tests\Sorter;
 
 use Budgegeria\IntlSort\Exception\IntlSortException;

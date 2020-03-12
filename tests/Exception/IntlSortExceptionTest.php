@@ -2,9 +2,7 @@
 
 declare(strict_types=1);
 
-
 namespace Budgegeria\IntlSort\Tests\Exception;
-
 
 use Budgegeria\IntlSort\Exception\IntlSortException;
 use PHPUnit\Framework\TestCase;
