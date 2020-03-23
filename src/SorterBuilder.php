@@ -32,91 +32,91 @@ class SorterBuilder
         $this->collator = new Collator($locale);
     }
 
-    public function enableFrenchCollation() : self
+    public function enableFrenchCollation(): self
     {
         $this->collator->setAttribute(Collator::FRENCH_COLLATION, Collator::ON);
 
         return $this;
     }
 
-    public function disableFrenchCollation() : self
+    public function disableFrenchCollation(): self
     {
         $this->collator->setAttribute(Collator::FRENCH_COLLATION, Collator::OFF);
 
         return $this;
     }
 
-    public function lowerCaseFirst() : self
+    public function lowerCaseFirst(): self
     {
         $this->collator->setAttribute(Collator::CASE_FIRST, Collator::LOWER_FIRST);
 
         return $this;
     }
 
-    public function upperCaseFirst() : self
+    public function upperCaseFirst(): self
     {
         $this->collator->setAttribute(Collator::CASE_FIRST, Collator::UPPER_FIRST);
 
         return $this;
     }
 
-    public function removeCaseFirst() : self
+    public function removeCaseFirst(): self
     {
         $this->collator->setAttribute(Collator::CASE_FIRST, Collator::OFF);
 
         return $this;
     }
 
-    public function enableNormalizationMode() : self
+    public function enableNormalizationMode(): self
     {
         $this->collator->setAttribute(Collator::NORMALIZATION_MODE, Collator::ON);
 
         return $this;
     }
 
-    public function disableNormalizationMode() : self
+    public function disableNormalizationMode(): self
     {
         $this->collator->setAttribute(Collator::NORMALIZATION_MODE, Collator::OFF);
 
         return $this;
     }
 
-    public function enableNumericCollation() : self
+    public function enableNumericCollation(): self
     {
         $this->collator->setAttribute(Collator::NUMERIC_COLLATION, Collator::ON);
 
         return $this;
     }
 
-    public function disableNumericCollation() : self
+    public function disableNumericCollation(): self
     {
         $this->collator->setAttribute(Collator::NUMERIC_COLLATION, Collator::OFF);
 
         return $this;
     }
 
-    public function enableCaseLevel() : self
+    public function enableCaseLevel(): self
     {
         $this->collator->setAttribute(Collator::CASE_LEVEL, Collator::ON);
 
         return $this;
     }
 
-    public function disableCaseLevel() : self
+    public function disableCaseLevel(): self
     {
         $this->collator->setAttribute(Collator::CASE_LEVEL, Collator::OFF);
 
         return $this;
     }
 
-    public function nonIgnorableAlternateHandling() : self
+    public function nonIgnorableAlternateHandling(): self
     {
         $this->collator->setAttribute(Collator::ALTERNATE_HANDLING, Collator::NON_IGNORABLE);
 
         return $this;
     }
 
-    public function shiftedAlternateHandling() : self
+    public function shiftedAlternateHandling(): self
     {
         $this->collator->setAttribute(Collator::ALTERNATE_HANDLING, Collator::SHIFTED);
 
@@ -126,7 +126,7 @@ class SorterBuilder
     /**
      * Ignore accents and case
      */
-    public function primaryStrength() : self
+    public function primaryStrength(): self
     {
         $this->collator->setStrength(Collator::PRIMARY);
 
@@ -136,7 +136,7 @@ class SorterBuilder
     /**
      * Ignore case, consider accents
      */
-    public function secondaryStrength() : self
+    public function secondaryStrength(): self
     {
         $this->collator->setStrength(Collator::SECONDARY);
 
@@ -146,7 +146,7 @@ class SorterBuilder
     /**
      * Consider accents and case
      */
-    public function tertiaryStrength() : self
+    public function tertiaryStrength(): self
     {
         $this->collator->setStrength(Collator::TERTIARY);
 
@@ -157,49 +157,49 @@ class SorterBuilder
      * Like tertiary, but also considers whitespace, punctuation, and symbols differently when
      * used with {@see shiftedAlternateHandling()} or {@see enableHiraganaQuaternaryMode()}
      */
-    public function quaternaryStrength() : self
+    public function quaternaryStrength(): self
     {
         $this->collator->setStrength(Collator::QUATERNARY);
 
         return $this;
     }
 
-    public function identicalStrength() : self
+    public function identicalStrength(): self
     {
         $this->collator->setStrength(Collator::IDENTICAL);
 
         return $this;
     }
 
-    public function orderByAsc() : self
+    public function orderByAsc(): self
     {
         $this->isAsc = true;
 
         return $this;
     }
 
-    public function orderByDesc() : self
+    public function orderByDesc(): self
     {
         $this->isAsc = false;
 
         return $this;
     }
 
-    public function orderByKeys() : self
+    public function orderByKeys(): self
     {
         $this->isKeySort = true;
 
         return $this;
     }
 
-    public function orderByValues() : self
+    public function orderByValues(): self
     {
         $this->isKeySort = false;
 
         return $this;
     }
 
-    public function getSorter() : Sorter
+    public function getSorter(): Sorter
     {
         if ($this->isKeySort) {
             $sorter = new Key($this->collator);
@@ -208,7 +208,7 @@ class SorterBuilder
         }
 
         if (! $this->isAsc) {
-            $sorter = new Desc($sorter);
+            return new Desc($sorter);
         }
 
         return $sorter;

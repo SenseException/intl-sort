@@ -29,7 +29,7 @@ final class Asc implements Sorter
     /**
      * {@inheritDoc}
      */
-    public function sort(array $values) : array
+    public function sort(array $values): array
     {
         if (! $this->collator->asort($values, $this->sortType)) {
             throw IntlSortException::errorOnSort(intl_get_error_message());

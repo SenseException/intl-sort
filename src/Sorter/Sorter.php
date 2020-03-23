@@ -13,5 +13,5 @@ interface Sorter
      * @throws IntlSortException
      * @return array<int|string>
      */
-    public function sort(array $values) : array;
+    public function sort(array $values): array;
 }

@@ -24,12 +24,12 @@ final class Key implements Sorter
     /**
      * {@inheritDoc}
      */
-    public function sort(array $values) : array
+    public function sort(array $values): array
     {
         $collator = $this->collator;
         uksort(
             $values,
-            static function ($first, $second) use ($collator) : int {
+            static function ($first, $second) use ($collator): int {
                 /** @var int|false $result */
                 $result = $collator->compare((string) $first, (string) $second);
                 if (false === $result) {

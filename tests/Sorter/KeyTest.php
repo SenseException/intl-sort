@@ -18,14 +18,14 @@ class KeyTest extends TestCase
      * @param array<int|string, string> $sortArray
      * @param array<int|string, string> $expected
      */
-    public function testSort($sortArray, $expected) : void
+    public function testSort($sortArray, $expected): void
     {
         $sorter = new Key(new Collator('en_US'));
 
         self::assertSame($expected, $sorter->sort($sortArray));
     }
 
-    public function testSortThrowsException() : void
+    public function testSortThrowsException(): void
     {
         $collator = $this->createStub(Collator::class);
         $collator->method('compare')
@@ -40,7 +40,7 @@ class KeyTest extends TestCase
     /**
      * @return Generator<mixed>
      */
-    public function provideSortedArrays() : Generator
+    public function provideSortedArrays(): Generator
     {
         yield 'mixed keys' => [
             [

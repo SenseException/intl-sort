@@ -8,7 +8,7 @@ use Exception;
 
 class IntlSortException extends Exception
 {
-    public static function errorOnSort(string $errorMessage) : self
+    public static function errorOnSort(string $errorMessage): self
     {
         return new self(sprintf('An error occurred during the sort-process: %s.', $errorMessage));
     }

@@ -9,7 +9,7 @@ use PHPUnit\Framework\TestCase;
 
 class IntlSortExceptionTest extends TestCase
 {
-    public function testErrorOnSort() : void
+    public function testErrorOnSort(): void
     {
         $e = IntlSortException::errorOnSort('because reasons');
 

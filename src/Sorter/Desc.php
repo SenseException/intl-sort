@@ -19,7 +19,7 @@ final class Desc implements Sorter
     /**
      * {@inheritDoc}
      */
-    public function sort(array $values) : array
+    public function sort(array $values): array
     {
         $values = $this->sorter->sort($values);
 

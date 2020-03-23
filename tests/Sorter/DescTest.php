@@ -11,7 +11,7 @@ use PHPUnit\Framework\TestCase;
 
 class DescTest extends TestCase
 {
-    public function testSort() : void
+    public function testSort(): void
     {
         $innerSorter = $this->createStub(Sorter::class);
         $innerSorter->method('sort')
@@ -22,7 +22,7 @@ class DescTest extends TestCase
         self::assertSame([1 => 'c', 0 => 'b', 2 => 'a', 3 => 1], $sorter->sort([]));
     }
 
-    public function testSortThrowsException() : void
+    public function testSortThrowsException(): void
     {
         $innerSorter = $this->createStub(Sorter::class);
         $innerSorter->method('sort')

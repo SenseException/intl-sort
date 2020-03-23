@@ -11,14 +11,14 @@ use PHPUnit\Framework\TestCase;
 
 class AscTest extends TestCase
 {
-    public function testSort() : void
+    public function testSort(): void
     {
         $sorter = new Asc(new Collator('en_US'), Collator::SORT_STRING);
 
         self::assertSame([3 => 1, 2 => 'a', 0 => 'b', 1 => 'c'], $sorter->sort(['b', 'c', 'a', 1]));
     }
 
-    public function testSortThrowsException() : void
+    public function testSortThrowsException(): void
     {
         $collator = $this->createStub(Collator::class);
         $collator->method('asort')

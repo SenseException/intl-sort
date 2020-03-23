@@ -16,42 +16,42 @@ class SorterBuilderTest extends TestCase
      */
     private $sorterBuilder;
 
-    protected function setUp() : void
+    protected function setUp(): void
     {
         $this->sorterBuilder = new SorterBuilder('fr_FR');
     }
 
-    public function testGetSorter() : void
+    public function testGetSorter(): void
     {
         self::assertAsc($this->sorterBuilder->getSorter());
     }
 
-    public function testOrderByDesc() : void
+    public function testOrderByDesc(): void
     {
         self::assertDesc($this->sorterBuilder->orderByDesc()->getSorter());
     }
 
-    public function testOrderByAsc() : void
+    public function testOrderByAsc(): void
     {
         self::assertAsc($this->sorterBuilder->orderByDesc()->orderByAsc()->getSorter());
     }
 
-    public function testOrderByKeys() : void
+    public function testOrderByKeys(): void
     {
         self::assertKeyAsc($this->sorterBuilder->orderByKeys()->getSorter());
     }
 
-    public function testOrderByKeysDesc() : void
+    public function testOrderByKeysDesc(): void
     {
         self::assertKeyDesc($this->sorterBuilder->orderByKeys()->orderByDesc()->getSorter());
     }
 
-    public function testOrderByValues() : void
+    public function testOrderByValues(): void
     {
         self::assertAsc($this->sorterBuilder->orderByKeys()->orderByValues()->getSorter());
     }
 
-    public function testEnableNormalizationMode() : void
+    public function testEnableNormalizationMode(): void
     {
         $expected = [0 => 'ạ̈', 1 => 'ạ̈'];
         $result = $this->sorterBuilder
@@ -62,7 +62,7 @@ class SorterBuilderTest extends TestCase
         self::assertSame($expected, $result);
     }
 
-    public function testDisableNormalizationMode() : void
+    public function testDisableNormalizationMode(): void
     {
         $expected = [1 => 'ạ̈', 0 => 'ạ̈'];
         $result = $this->sorterBuilder
@@ -74,7 +74,7 @@ class SorterBuilderTest extends TestCase
         self::assertSame($expected, $result);
     }
 
-    public function testEnableCaseLevel() : void
+    public function testEnableCaseLevel(): void
     {
         $expected = [1 => 'b', 0 => 'B', 2 => 'c'];
         $result = $this->sorterBuilder
@@ -91,7 +91,7 @@ class SorterBuilderTest extends TestCase
      *
      * @param string[] $values
      */
-    public function testDisableCaseLevel(array $values) : void
+    public function testDisableCaseLevel(array $values): void
     {
         $result = $this->sorterBuilder
             ->enableCaseLevel()
@@ -106,7 +106,7 @@ class SorterBuilderTest extends TestCase
     /**
      * @return Generator<array<int, array<int, string>>>
      */
-    public function provideDisabledCaseLevelValues() : Generator
+    public function provideDisabledCaseLevelValues(): Generator
     {
         yield [['b', 'B', 'c']];
         yield [['B', 'b', 'c']];
@@ -117,7 +117,7 @@ class SorterBuilderTest extends TestCase
      *
      * @param string[] $values
      */
-    public function testPrimaryStrength(array $values) : void
+    public function testPrimaryStrength(array $values): void
     {
         $result = $this->sorterBuilder
             ->primaryStrength()
@@ -130,7 +130,7 @@ class SorterBuilderTest extends TestCase
     /**
      * @return Generator<array<int, array<int, string>>>
      */
-    public function providePrimaryStrengthValues() : Generator
+    public function providePrimaryStrengthValues(): Generator
     {
         yield [['côté', 'Côte', 'côte', 'd']];
         yield [['côte', 'côté', 'Côte', 'd']];
@@ -141,7 +141,7 @@ class SorterBuilderTest extends TestCase
      *
      * @param string[] $values
      */
-    public function testSecondaryStrength(array $values) : void
+    public function testSecondaryStrength(array $values): void
     {
         $result = $this->sorterBuilder
             ->secondaryStrength()
@@ -154,7 +154,7 @@ class SorterBuilderTest extends TestCase
     /**
      * @return Generator<array<int, array<int, string>>>
      */
-    public function provideSecondaryStrengthValues() : Generator
+    public function provideSecondaryStrengthValues(): Generator
     {
         yield [['côte', 'Côte', 'côté', 'd']];
         yield [['Role', 'role', 'rôle']];
@@ -165,7 +165,7 @@ class SorterBuilderTest extends TestCase
      *
      * @param string[] $values
      */
-    public function testTertiaryStrength(array $values) : void
+    public function testTertiaryStrength(array $values): void
     {
         $result = $this->sorterBuilder
             ->identicalStrength()
@@ -179,7 +179,7 @@ class SorterBuilderTest extends TestCase
     /**
      * @return Generator<array<int, array<int, string>>>
      */
-    public function provideTertiaryStrengthValues() : Generator
+    public function provideTertiaryStrengthValues(): Generator
     {
         yield [['côte', 'Côte', 'côté']];
         yield [['role', 'Role', 'rôle']];
@@ -192,7 +192,7 @@ class SorterBuilderTest extends TestCase
      * @param string[] $values
      * @param string[] $expected
      */
-    public function testQuarternaryStrength(array $values, array $expected) : void
+    public function testQuarternaryStrength(array $values, array $expected): void
     {
         $result = $this->sorterBuilder
             ->quaternaryStrength()
@@ -206,7 +206,7 @@ class SorterBuilderTest extends TestCase
     /**
      * @return Generator<array<int, array<int, string>>>
      */
-    public function provideQuarternaryStrengthValues() : Generator
+    public function provideQuarternaryStrengthValues(): Generator
     {
         yield [
             [
@@ -236,7 +236,7 @@ class SorterBuilderTest extends TestCase
         ];
     }
 
-    public function testIdenticalStrength() : void
+    public function testIdenticalStrength(): void
     {
         $values = ['𝑎', '𝐚'];
         $expected = [1 => '𝐚', 0 => '𝑎'];
@@ -248,7 +248,7 @@ class SorterBuilderTest extends TestCase
         self::assertSame($expected, $result);
     }
 
-    public function testUpperCaseFirst() : void
+    public function testUpperCaseFirst(): void
     {
         $expected = [1 => 'B', 0 => 'b'];
         $result = $this->sorterBuilder
@@ -259,7 +259,7 @@ class SorterBuilderTest extends TestCase
         self::assertSame($expected, $result);
     }
 
-    public function testLowerCaseFirst() : void
+    public function testLowerCaseFirst(): void
     {
         $expected = [1 => 'b', 0 => 'B'];
         $result = $this->sorterBuilder
@@ -271,7 +271,7 @@ class SorterBuilderTest extends TestCase
         self::assertSame($expected, $result);
     }
 
-    public function testRemoveCaseFirst() : void
+    public function testRemoveCaseFirst(): void
     {
         $expected = [1 => 'b', 0 => 'B'];
         $result = $this->sorterBuilder
@@ -283,7 +283,7 @@ class SorterBuilderTest extends TestCase
         self::assertSame($expected, $result);
     }
 
-    public function testShiftedAlternateHandling() : void
+    public function testShiftedAlternateHandling(): void
     {
         $values = ['USA', 'U.S.A'];
         $unexpected = [
@@ -299,7 +299,7 @@ class SorterBuilderTest extends TestCase
         self::assertNotSame($unexpected, $result);
     }
 
-    public function testNonIgnorableAlternateHandling() : void
+    public function testNonIgnorableAlternateHandling(): void
     {
         $values = ['USA', 'U.S.A'];
         $expected = [
@@ -315,7 +315,7 @@ class SorterBuilderTest extends TestCase
         self::assertSame($expected, $result);
     }
 
-    public function testEnableNumericCollation() : void
+    public function testEnableNumericCollation(): void
     {
         $values = ['100', '4'];
         $expected = [
@@ -330,7 +330,7 @@ class SorterBuilderTest extends TestCase
         self::assertSame($expected, $result);
     }
 
-    public function testDisableNumericCollation() : void
+    public function testDisableNumericCollation(): void
     {
         $values = ['4', '100'];
         $expected = [
@@ -346,7 +346,7 @@ class SorterBuilderTest extends TestCase
         self::assertSame($expected, $result);
     }
 
-    public function testEnableFrenchCollation() : void
+    public function testEnableFrenchCollation(): void
     {
         $expected = [
             2 => 'cote',
@@ -362,7 +362,7 @@ class SorterBuilderTest extends TestCase
         self::assertSame($expected, $result);
     }
 
-    public function testDisableFrenchCollation() : void
+    public function testDisableFrenchCollation(): void
     {
         $expected = [
             2 => 'cote',
@@ -379,7 +379,7 @@ class SorterBuilderTest extends TestCase
         self::assertSame($expected, $result);
     }
 
-    private static function assertAsc(Sorter $sorter) : void
+    private static function assertAsc(Sorter $sorter): void
     {
         $expected = [
             3 => 1,
@@ -391,7 +391,7 @@ class SorterBuilderTest extends TestCase
         self::assertSame($expected, $sorter->sort(['b', 'c', 'a', 1]));
     }
 
-    private static function assertDesc(Sorter $sorter) : void
+    private static function assertDesc(Sorter $sorter): void
     {
         $expected = [
             1 => 'c',
@@ -403,7 +403,7 @@ class SorterBuilderTest extends TestCase
         self::assertSame($expected, $sorter->sort(['b', 'c', 'a', 1]));
     }
 
-    private static function assertKeyAsc(Sorter $sorter) : void
+    private static function assertKeyAsc(Sorter $sorter): void
     {
         $expected = [
             1 => 'foo',
@@ -420,7 +420,7 @@ class SorterBuilderTest extends TestCase
         ]));
     }
 
-    private static function assertKeyDesc(Sorter $sorter) : void
+    private static function assertKeyDesc(Sorter $sorter): void
     {
         $expected = [
             'c' => 'foo',
