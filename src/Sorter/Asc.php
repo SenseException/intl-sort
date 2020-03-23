@@ -6,6 +6,7 @@ namespace Budgegeria\IntlSort\Sorter;
 
 use Budgegeria\IntlSort\Exception\IntlSortException;
 use Collator;
+use function intl_get_error_message;
 
 final class Asc implements Sorter
 {
@@ -31,7 +32,7 @@ final class Asc implements Sorter
     public function sort(array $values) : array
     {
         if (! $this->collator->asort($values, $this->sortType)) {
-            throw IntlSortException::errorOnSort();
+            throw IntlSortException::errorOnSort(intl_get_error_message());
         }
 
         return $values;

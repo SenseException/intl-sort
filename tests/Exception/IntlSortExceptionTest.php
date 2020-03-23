@@ -11,8 +11,8 @@ class IntlSortExceptionTest extends TestCase
 {
     public function testErrorOnSort() : void
     {
-        $e = IntlSortException::errorOnSort();
+        $e = IntlSortException::errorOnSort('because reasons');
 
-        self::assertSame('An error occurred during the sort-process: U_ZERO_ERROR.', $e->getMessage());
+        self::assertSame('An error occurred during the sort-process: because reasons.', $e->getMessage());
     }
 }

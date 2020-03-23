@@ -6,6 +6,7 @@ namespace Budgegeria\IntlSort\Sorter;
 
 use Budgegeria\IntlSort\Exception\IntlSortException;
 use Collator;
+use function intl_get_error_message;
 use function uksort;
 
 final class Key implements Sorter
@@ -32,7 +33,7 @@ final class Key implements Sorter
                 /** @var int|false $result */
                 $result = $collator->compare((string) $first, (string) $second);
                 if (false === $result) {
-                    throw IntlSortException::errorOnSort();
+                    throw IntlSortException::errorOnSort(intl_get_error_message());
                 }
 
                 return $result;
