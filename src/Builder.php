@@ -10,7 +10,7 @@ use Budgegeria\IntlSort\Sorter\Key;
 use Budgegeria\IntlSort\Sorter\Sorter;
 use Collator;
 
-class SorterBuilder
+class Builder
 {
     /**
      * @var Collator
