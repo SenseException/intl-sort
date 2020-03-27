@@ -51,6 +51,11 @@ class BuilderTest extends TestCase
         self::assertAsc($this->builder->orderByKeys()->orderByValues()->getSorter());
     }
 
+    public function testComparator(): void
+    {
+        self::assertTrue($this->builder->getComparator()->compare('a', 'a')->isSame());
+    }
+
     public function testEnableNormalizationMode(): void
     {
         $expected = [0 => 'ạ̈', 1 => 'ạ̈'];

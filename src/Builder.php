@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Budgegeria\IntlSort;
 
+use Budgegeria\IntlSort\Comparator\Comparable;
+use Budgegeria\IntlSort\Comparator\Comparator;
 use Budgegeria\IntlSort\Sorter\Asc;
 use Budgegeria\IntlSort\Sorter\Desc;
 use Budgegeria\IntlSort\Sorter\Key;
@@ -212,5 +214,10 @@ class Builder
         }
 
         return $sorter;
+    }
+
+    public function getComparator(): Comparable
+    {
+        return new Comparator($this->collator);
     }
 }
