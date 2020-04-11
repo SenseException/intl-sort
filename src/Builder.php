@@ -10,6 +10,7 @@ use Budgegeria\IntlSort\Sorter\Asc;
 use Budgegeria\IntlSort\Sorter\Desc;
 use Budgegeria\IntlSort\Sorter\Key;
 use Budgegeria\IntlSort\Sorter\Sorter;
+use Budgegeria\IntlSort\SorterFactory\Factory;
 use Collator;
 
 class Builder
@@ -28,6 +29,11 @@ class Builder
      * @var bool
      */
     private $isKeySort = false;
+
+    /**
+     * @var Factory|null
+     */
+    private $sorterFactory;
 
     public function __construct(string $locale)
     {
@@ -201,12 +207,30 @@ class Builder
         return $this;
     }
 
+    public function orderByCustomSorter(Factory $factory): self
+    {
+        $this->sorterFactory = $factory;
+
+        return $this;
+    }
+
+    public function unsetOrderByCustomSorter(): self
+    {
+        $this->sorterFactory = null;
+
+        return $this;
+    }
+
     public function getSorter(): Sorter
     {
-        if ($this->isKeySort) {
-            $sorter = new Key($this->collator);
+        if ($this->sorterFactory === null) {
+            if ($this->isKeySort) {
+                $sorter = new Key($this->collator);
+            } else {
+                $sorter = new Asc($this->collator, Collator::SORT_STRING);
+            }
         } else {
-            $sorter = new Asc($this->collator, Collator::SORT_STRING);
+            $sorter = $this->sorterFactory->createSorter($this->collator);
         }
 
         if (! $this->isAsc) {

@@ -6,6 +6,8 @@ namespace Budgegeria\IntlSort\Tests;
 
 use Budgegeria\IntlSort\Sorter\Sorter;
 use Budgegeria\IntlSort\Builder;
+use Budgegeria\IntlSort\SorterFactory\Factory;
+use Collator;
 use Generator;
 use PHPUnit\Framework\TestCase;
 
@@ -380,6 +382,57 @@ class BuilderTest extends TestCase
             ->disableFrenchCollation()
             ->getSorter()
             ->sort(['côté', 'côte', 'cote', 'coté']);
+
+        self::assertSame($expected, $result);
+    }
+
+    public function testUseCustomSorter(): void
+    {
+        $expected = [
+            'c' => 'foo',
+            1 => 'foo',
+            'a' => 'foo',
+            'b' => 'foo',
+        ];
+
+        $sorter = $this->createStub(Sorter::class);
+        $sorter->method('sort')
+            ->willReturn($expected);
+
+        $sorterFactory = $this->createMock(Factory::class);
+        $sorterFactory->expects(self::once())
+            ->method('createSorter')
+            ->with(self::isInstanceOf(Collator::class))
+            ->willReturn($sorter);
+
+        $result = $this->builder
+            ->orderByKeys()
+            ->orderByCustomSorter($sorterFactory)
+            ->getSorter()
+            ->sort($expected);
+
+        self::assertSame($expected, $result);
+    }
+
+    public function testUnsetCustomSorter(): void
+    {
+        $expected = [
+            'c' => 'foo',
+            1 => 'foo',
+            'a' => 'foo',
+            'b' => 'foo',
+        ];
+
+        $sorterFactory = $this->createMock(Factory::class);
+        $sorterFactory->expects(self::never())
+            ->method('createSorter');
+
+        $result = $this->builder
+            ->orderByAsc()
+            ->orderByCustomSorter($sorterFactory)
+            ->unsetOrderByCustomSorter()
+            ->getSorter()
+            ->sort($expected);
 
         self::assertSame($expected, $result);
     }
