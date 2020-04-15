@@ -22,19 +22,39 @@ class ComparatorTest extends TestCase
         $this->comparator = new Comparator(new Collator('en_US'));
     }
 
+    public function testDelegateToCollator(): void
+    {
+        $collator = $this->createMock(Collator::class);
+        $collator->expects(self::once())
+            ->method('compare')
+            ->with('1', 'a')
+            ->willReturn(-1);
+        $collator->expects(self::once())
+            ->method('getErrorCode')
+            ->willReturn(0);
+
+        self::assertSame(-1, (new Comparator($collator))->compare(1, 'a'));
+    }
+
     public function testIsSame(): void
     {
         self::assertSame(0, $this->comparator->compare('a', 'a'));
+        self::assertSame(0, $this->comparator->compare(1, 1));
+        self::assertSame(0, $this->comparator->compare(1, '1'));
     }
 
     public function testIsGreater(): void
     {
         self::assertSame(1, $this->comparator->compare('b', 'a'));
+        self::assertSame(1, $this->comparator->compare(2, 1));
+        self::assertSame(1, $this->comparator->compare('a', 1));
     }
 
     public function testIsLess(): void
     {
         self::assertSame(-1, $this->comparator->compare('a', 'b'));
+        self::assertSame(-1, $this->comparator->compare(1, 2));
+        self::assertSame(-1, $this->comparator->compare(1, 'a'));
     }
 
     public function testInvokesError(): void
