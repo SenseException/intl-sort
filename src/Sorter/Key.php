@@ -4,21 +4,19 @@ declare(strict_types=1);
 
 namespace Budgegeria\IntlSort\Sorter;
 
-use Budgegeria\IntlSort\Exception\IntlSortException;
-use Collator;
-use function intl_get_error_message;
+use Budgegeria\IntlSort\Comparator\Comparable;
 use function uksort;
 
 final class Key implements Sorter
 {
     /**
-     * @var Collator
+     * @var Comparable
      */
-    private $collator;
+    private $comparable;
 
-    public function __construct(Collator $collator)
+    public function __construct(Comparable $comparable)
     {
-        $this->collator = $collator;
+        $this->comparable = $comparable;
     }
 
     /**
@@ -26,17 +24,15 @@ final class Key implements Sorter
      */
     public function sort(array $values): array
     {
-        $collator = $this->collator;
+        $comparable = $this->comparable;
         uksort(
             $values,
-            static function ($first, $second) use ($collator): int {
-                /** @var int|false $result */
-                $result = $collator->compare((string) $first, (string) $second);
-                if (false === $result) {
-                    throw IntlSortException::errorOnSort(intl_get_error_message());
-                }
-
-                return $result;
+            /**
+             * @param mixed $first
+             * @param mixed $second
+             */
+            static function ($first, $second) use ($comparable): int {
+                return $comparable->compare($first, $second);
             }
         );
 

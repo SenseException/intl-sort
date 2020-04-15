@@ -4,26 +4,19 @@ declare(strict_types=1);
 
 namespace Budgegeria\IntlSort\Sorter;
 
-use Budgegeria\IntlSort\Exception\IntlSortException;
-use Collator;
-use function intl_get_error_message;
+use Budgegeria\IntlSort\Comparator\Comparable;
+use function uasort;
 
 final class Asc implements Sorter
 {
     /**
-     * @var Collator
+     * @var Comparable
      */
-    private $collator;
+    private $comparable;
 
-    /**
-     * @var int A Collator::SORT_* sort flag
-     */
-    private $sortType;
-
-    public function __construct(Collator $collator, int $sortType)
+    public function __construct(Comparable $comparable)
     {
-        $this->collator = $collator;
-        $this->sortType = $sortType;
+        $this->comparable = $comparable;
     }
 
     /**
@@ -31,9 +24,17 @@ final class Asc implements Sorter
      */
     public function sort(array $values): array
     {
-        if (! $this->collator->asort($values, $this->sortType)) {
-            throw IntlSortException::errorOnSort(intl_get_error_message());
-        }
+        $comparable = $this->comparable;
+        uasort(
+            $values,
+            /**
+             * @param mixed $first
+             * @param mixed $second
+             */
+            static function ($first, $second) use ($comparable): int {
+                return $comparable->compare($first, $second);
+            }
+        );
 
         return $values;
     }
