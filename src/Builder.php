@@ -5,12 +5,12 @@ declare(strict_types=1);
 namespace Budgegeria\IntlSort;
 
 use Budgegeria\IntlSort\Comparator\Comparable;
-use Budgegeria\IntlSort\Comparator\Comparator;
+use Budgegeria\IntlSort\ComparatorFactory\Standard;
+use Budgegeria\IntlSort\ComparatorFactory\Factory;
 use Budgegeria\IntlSort\Sorter\Asc;
 use Budgegeria\IntlSort\Sorter\Desc;
 use Budgegeria\IntlSort\Sorter\Key;
 use Budgegeria\IntlSort\Sorter\Sorter;
-use Budgegeria\IntlSort\SorterFactory\Factory;
 use Collator;
 
 class Builder
@@ -31,13 +31,14 @@ class Builder
     private $isKeySort = false;
 
     /**
-     * @var Factory|null
+     * @var Factory
      */
-    private $sorterFactory;
+    private $comparatorFactory;
 
-    public function __construct(string $locale)
+    public function __construct(string $locale, ?Factory $comparatorFactory = null)
     {
         $this->collator = new Collator($locale);
+        $this->comparatorFactory = $comparatorFactory ?? new Standard();
     }
 
     public function enableFrenchCollation(): self
@@ -163,7 +164,7 @@ class Builder
 
     /**
      * Like tertiary, but also considers whitespace, punctuation, and symbols differently when
-     * used with {@see shiftedAlternateHandling()} or {@see enableHiraganaQuaternaryMode()}
+     * used with {@see shiftedAlternateHandling()}
      */
     public function quaternaryStrength(): self
     {
@@ -207,30 +208,13 @@ class Builder
         return $this;
     }
 
-    public function orderByCustomSorter(Factory $factory): self
-    {
-        $this->sorterFactory = $factory;
-
-        return $this;
-    }
-
-    public function unsetOrderByCustomSorter(): self
-    {
-        $this->sorterFactory = null;
-
-        return $this;
-    }
-
     public function getSorter(): Sorter
     {
-        if ($this->sorterFactory === null) {
-            if ($this->isKeySort) {
-                $sorter = new Key($this->collator);
-            } else {
-                $sorter = new Asc($this->collator, Collator::SORT_STRING);
-            }
+        $comparator = $this->getComparator();
+        if ($this->isKeySort) {
+            $sorter = new Key($comparator);
         } else {
-            $sorter = $this->sorterFactory->createSorter($this->collator);
+            $sorter = new Asc($comparator);
         }
 
         if (! $this->isAsc) {
@@ -242,6 +226,6 @@ class Builder
 
     public function getComparator(): Comparable
     {
-        return new Comparator($this->collator);
+        return $this->comparatorFactory->create($this->collator);
     }
 }

@@ -4,9 +4,10 @@ declare(strict_types=1);
 
 namespace Budgegeria\IntlSort\Tests;
 
+use Budgegeria\IntlSort\Comparator\Comparable;
+use Budgegeria\IntlSort\ComparatorFactory\Factory;
 use Budgegeria\IntlSort\Sorter\Sorter;
 use Budgegeria\IntlSort\Builder;
-use Budgegeria\IntlSort\SorterFactory\Factory;
 use Collator;
 use Generator;
 use PHPUnit\Framework\TestCase;
@@ -55,7 +56,7 @@ class BuilderTest extends TestCase
 
     public function testComparator(): void
     {
-        self::assertTrue($this->builder->getComparator()->compare('a', 'a')->isSame());
+        self::assertSame(0, $this->builder->getComparator()->compare('a', 'a'));
     }
 
     public function testEnableNormalizationMode(): void
@@ -386,51 +387,26 @@ class BuilderTest extends TestCase
         self::assertSame($expected, $result);
     }
 
-    public function testUseCustomSorter(): void
+    public function testUseCustomComparator(): void
     {
         $expected = [
-            'c' => 'foo',
-            1 => 'foo',
-            'a' => 'foo',
-            'b' => 'foo',
+            'c' => 'foo1',
+            1 => 'foo2',
+            'a' => 'foo4',
+            'b' => 'foo3',
         ];
 
-        $sorter = $this->createStub(Sorter::class);
-        $sorter->method('sort')
-            ->willReturn($expected);
+        $comparable = $this->createStub(Comparable::class);
+        $comparable->method('compare')
+            ->willReturn(0);
 
-        $sorterFactory = $this->createMock(Factory::class);
-        $sorterFactory->expects(self::once())
-            ->method('createSorter')
+        $comparatorFactory = $this->createMock(Factory::class);
+        $comparatorFactory->expects(self::once())
+            ->method('create')
             ->with(self::isInstanceOf(Collator::class))
-            ->willReturn($sorter);
+            ->willReturn($comparable);
 
-        $result = $this->builder
-            ->orderByKeys()
-            ->orderByCustomSorter($sorterFactory)
-            ->getSorter()
-            ->sort($expected);
-
-        self::assertSame($expected, $result);
-    }
-
-    public function testUnsetCustomSorter(): void
-    {
-        $expected = [
-            'c' => 'foo',
-            1 => 'foo',
-            'a' => 'foo',
-            'b' => 'foo',
-        ];
-
-        $sorterFactory = $this->createMock(Factory::class);
-        $sorterFactory->expects(self::never())
-            ->method('createSorter');
-
-        $result = $this->builder
-            ->orderByAsc()
-            ->orderByCustomSorter($sorterFactory)
-            ->unsetOrderByCustomSorter()
+        $result = (new Builder('fr_FR', $comparatorFactory))
             ->getSorter()
             ->sort($expected);
 
