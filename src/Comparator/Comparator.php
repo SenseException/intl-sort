@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Budgegeria\IntlSort\Comparator;
 
+use Budgegeria\IntlSort\Exception\IntlSortException;
 use Collator;
 
 class Comparator implements Comparable
@@ -18,8 +19,17 @@ class Comparator implements Comparable
         $this->collator = $collator;
     }
 
-    public function compare(string $value, string $comparativeValue): Result
+    /**
+     * {@inheritDoc}
+     */
+    public function compare($value, $comparativeValue): int
     {
-        return new SignedIntResult($this->collator->compare($value, $comparativeValue));
+        $compared = $this->collator->compare((string) $value, (string) $comparativeValue);
+
+        if ($this->collator->getErrorCode() !== 0) {
+            throw IntlSortException::errorOnSort($this->collator->getErrorMessage());
+        }
+
+        return $compared;
     }
 }

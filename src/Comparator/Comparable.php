@@ -4,7 +4,15 @@ declare(strict_types=1);
 
 namespace Budgegeria\IntlSort\Comparator;
 
+use Budgegeria\IntlSort\Exception\IntlSortException;
+
 interface Comparable
 {
-    public function compare(string $value, string $comparativeValue): Result;
+    /**
+     * @param mixed $value
+     * @param mixed $comparativeValue
+     *
+     * @throws IntlSortException
+     */
+    public function compare($value, $comparativeValue): int;
 }

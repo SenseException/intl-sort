@@ -3,6 +3,7 @@
 namespace Budgegeria\IntlSort\Tests\Comparator;
 
 use Budgegeria\IntlSort\Comparator\Comparator;
+use Budgegeria\IntlSort\Exception\IntlSortException;
 use Collator;
 use PHPUnit\Framework\TestCase;
 
@@ -23,22 +24,28 @@ class ComparatorTest extends TestCase
 
     public function testIsSame(): void
     {
-        self::assertTrue($this->comparator->compare('a', 'a')->isSame());
-        self::assertFalse($this->comparator->compare('a', 'b')->isSame());
-        self::assertFalse($this->comparator->compare('b', 'a')->isSame());
+        self::assertSame(0, $this->comparator->compare('a', 'a'));
     }
 
     public function testIsGreater(): void
     {
-        self::assertFalse($this->comparator->compare('a', 'a')->isGreater());
-        self::assertFalse($this->comparator->compare('a', 'b')->isGreater());
-        self::assertTrue($this->comparator->compare('b', 'a')->isGreater());
+        self::assertSame(1, $this->comparator->compare('b', 'a'));
     }
 
     public function testIsLess(): void
     {
-        self::assertFalse($this->comparator->compare('a', 'a')->isLess());
-        self::assertTrue($this->comparator->compare('a', 'b')->isLess());
-        self::assertFalse($this->comparator->compare('b', 'a')->isLess());
+        self::assertSame(-1, $this->comparator->compare('a', 'b'));
+    }
+
+    public function testInvokesError(): void
+    {
+        $collator = $this->createStub(Collator::class);
+        $collator->method('getErrorCode')
+            ->willReturn(42);
+        $collator->method('getErrorMessage')
+            ->willReturn('error');
+
+        $this->expectException(IntlSortException::class);
+        (new Comparator($collator))->compare('a', 'b');
     }
 }
