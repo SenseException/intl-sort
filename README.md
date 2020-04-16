@@ -15,7 +15,8 @@ you to sort your data country/locale specific.
 ### Why using this library?
 
 This library wraps the `Collator` class of the PHP Intl extension and offers a builder pattern
-API to create a `Sorter` to sort internationalized values by the rules of a locale.
+API to create a `Sorter` to sort internationalized values by the rules of a locale. You also can
+implement your own sorting logic to be able to e.g. sort your custom value objects.
 
 ## Installation
 
@@ -74,7 +75,8 @@ var_dump($sortedArray); // ['z' => 5, 'ß' => 3, 'g' => 1, 'ä' => 4, 'A' => 2,]
 ```
 
 There are also more configuration possibilities in the builder like setting strength,
-lower case first / upper case first or special french collation.
+lower case first / upper case first or special french collation. Read more about
+it in the [documentation](https://senseexception.github.io/intl-sort).
 
 ## Does it affect [GDPR](https://www.eugdpr.org/) somehow?
 
