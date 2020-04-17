@@ -15,4 +15,11 @@ class IntlSortExceptionTest extends TestCase
 
         self::assertSame('An error occurred during the sort-process: because reasons.', $e->getMessage());
     }
+
+    public function testErrorOnInstantiation(): void
+    {
+        $e = IntlSortException::invalidLocale('lo_cale');
+
+        self::assertSame('Could not create Collator instance because of invalid locale "lo_cale".', $e->getMessage());
+    }
 }

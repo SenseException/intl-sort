@@ -24,10 +24,14 @@ class Comparator implements Comparable
      */
     public function compare($value, $comparativeValue): int
     {
-        $compared = $this->collator->compare((string) $value, (string) $comparativeValue);
+        try {
+            $compared = $this->collator->compare((string)$value, (string)$comparativeValue);
 
-        if ($this->collator->getErrorCode() !== 0) {
-            throw IntlSortException::errorOnSort($this->collator->getErrorMessage());
+            if ($this->collator->getErrorCode() !== 0) {
+                throw IntlSortException::errorOnSort($this->collator->getErrorMessage());
+            }
+        } catch (\IntlException $e) {
+            throw IntlSortException::errorOnSort($e->getMessage());
         }
 
         return $compared;

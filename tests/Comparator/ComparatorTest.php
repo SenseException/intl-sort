@@ -68,4 +68,14 @@ class ComparatorTest extends TestCase
         $this->expectException(IntlSortException::class);
         (new Comparator($collator))->compare('a', 'b');
     }
+
+    public function testThrowsIntlException(): void
+    {
+        $collator = $this->createStub(Collator::class);
+        $collator->method('compare')
+            ->willThrowException(new \IntlException('error'));
+
+        $this->expectException(IntlSortException::class);
+        (new Comparator($collator))->compare('a', 'b');
+    }
 }

@@ -12,4 +12,9 @@ class IntlSortException extends Exception
     {
         return new self(sprintf('An error occurred during the sort-process: %s.', $errorMessage));
     }
+
+    public static function invalidLocale(string $locale): self
+    {
+        return new self(sprintf('Could not create Collator instance because of invalid locale "%s".', $locale));
+    }
 }

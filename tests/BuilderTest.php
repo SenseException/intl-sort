@@ -6,6 +6,7 @@ namespace Budgegeria\IntlSort\Tests;
 
 use Budgegeria\IntlSort\Comparator\Comparable;
 use Budgegeria\IntlSort\ComparatorFactory\Factory;
+use Budgegeria\IntlSort\Exception\IntlSortException;
 use Budgegeria\IntlSort\Sorter\Sorter;
 use Budgegeria\IntlSort\Builder;
 use Collator;
