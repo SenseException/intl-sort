@@ -7,7 +7,6 @@ namespace Budgegeria\IntlSort;
 use Budgegeria\IntlSort\Comparator\Comparable;
 use Budgegeria\IntlSort\ComparatorFactory\Standard;
 use Budgegeria\IntlSort\ComparatorFactory\Factory;
-use Budgegeria\IntlSort\Exception\IntlSortException;
 use Budgegeria\IntlSort\Sorter\Asc;
 use Budgegeria\IntlSort\Sorter\Desc;
 use Budgegeria\IntlSort\Sorter\Key;
