@@ -84,3 +84,12 @@ var_dump($result); // 1
 
 The comparator returns `-1` if the first argument is less than the second one. If the first argument
 is greater it will return `1` and `0` if they are equal.
+
+### Create custom sorting for non string / integer elements
+
+Behind the scenes of intl-sort is the `Comparator`, which is the core part handling the sorting of elements inside
+the `Sorter`-instances. It was created to order string or integer values by local conventions, but isn't able to handle
+e.g. value objects or other types containing useful string/integer values. Luckily intl-sort allows you to create and
+use your own `Comparator` to work with your project's data.
+
+[Read more about how to create and use a custom `Comparator`](custom-comparator.md).
