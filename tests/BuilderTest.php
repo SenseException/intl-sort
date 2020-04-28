@@ -413,6 +413,16 @@ class BuilderTest extends TestCase
         self::assertSame($expected, $result);
     }
 
+    public function testGetDifferentSorterInstances(): void
+    {
+        self::assertNotSame($this->builder->getSorter(), $this->builder->getSorter());
+    }
+
+    public function testGetDifferentComparatorInstances(): void
+    {
+        self::assertNotSame($this->builder->getComparator(), $this->builder->getComparator());
+    }
+
     private static function assertAsc(Sorter $sorter): void
     {
         $expected = [
