@@ -3,8 +3,8 @@
 The heart of the intl-sort library is the `Comparator`, which handles the comparision of
 values and influences the sorting of elements. A configured and ready to use PHP Intl 
 Collator is injected into the `Comparator` where you can decide which part of values
-should be compared. If the default `Comparator` doesn't fit to your needs, you can
-create your own one.
+should be compared. If the default `Comparator` or one of the [other provided comparators and factories](factory.md)
+don't fit to your needs, you can create your own one.
 
 Let's use code examples and explain how you can implement a `Comparator` that e.g. can sort an
 array of objects of the same type. We assume your objects are instances of a class named
