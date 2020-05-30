@@ -17,4 +17,14 @@ class IntlSortException extends Exception
     {
         return new self(sprintf('Could not create Collator instance because of invalid locale "%s".', $locale));
     }
+
+    public static function doesNotImplementComparable(string $classname): self
+    {
+        return new self(sprintf('Class "%s" does not implement Comaprable interface.', $classname));
+    }
+
+    public static function classDoesNotExist(string $classname): self
+    {
+        return new self(sprintf('Class "%s" does not exist.', $classname));
+    }
 }
