@@ -3,7 +3,5 @@ parameters:
     paths:
         - "%currentWorkingDirectory%/src/"
         - "%currentWorkingDirectory%/tests/"
-    ignoreErrors:
-        - '~on an unknown class PHPUnit\\Framework\\MockObject\\InvocationMocker\.$~'
 includes:
     - vendor/phpstan/phpstan-phpunit/extension.neon
