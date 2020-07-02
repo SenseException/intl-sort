@@ -14,6 +14,10 @@ you to sort your data country/locale specific.
 
 ### Why using this library?
 
+PHP functions like `sort()` work most of the time when it comes to sort values,
+but they don't return useful results when a country or language specific order of values is
+needed like e.g. words with umlauts or other accents.
+
 This library wraps the `Collator` class of the PHP Intl extension and offers a builder pattern
 API to create a `Sorter` to sort internationalized values by the rules of a locale. You also can
 implement your own sorting logic to be able to e.g. sort your custom value objects.
