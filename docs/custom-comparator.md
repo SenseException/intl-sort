@@ -103,7 +103,9 @@ class ProductNameComparatorFactory implements Factory
 ```
 
 A factory has also the advantage to inject dependencies into a constructor in case your
-comparator needs more than just a `Collator`.
+comparator needs more than just a `Collator`. In case you just have a dependency to a `Collator`,
+you can also use the `Budgegeria\IntlSort\ComparatorFactory\SimpleCollator` factory instead of
+creating your own one.
 
 ### Get your comparator into the sorter builder
 

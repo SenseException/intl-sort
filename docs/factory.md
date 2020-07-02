@@ -78,3 +78,21 @@ $factory = new \Budgegeria\IntlSort\ComparatorFactory\ValueObject('bar', true);
 
 The second argument is being used to mark the name in argument one as a property name. Using `false` will make the
 factory use the given name as a method like mentioned before.
+
+### SimpleCollator - A Comparator with a Collator dependency
+
+If you have created a Comparator that only needs a Collator to be injected, you can use the SimpleCollator-Factory
+instead of creating your own factory class. SimpleCollator can be used with every Comparator that has only the Collator
+as constructor dependency.
+
+```php
+class MyComparator implements \Budgegeria\IntlSort\Comparator\CollatorConstructor
+{
+    public function __construct(\Collator $collator)
+    {
+        // ...
+    }
+}
+
+$factory = new \Budgegeria\IntlSort\ComparatorFactory\SimpleCollator(MyComparator::class);
+```
