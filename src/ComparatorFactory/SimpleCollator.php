@@ -25,7 +25,10 @@ class SimpleCollator implements Factory
             throw IntlSortException::classDoesNotExist($classname);
         }
 
-        if (! in_array(CollatorConstructor::class, class_implements($classname), true)) {
+        /** @var array<string> $interfaces */
+        $interfaces = class_implements($classname);
+
+        if (! in_array(CollatorConstructor::class, $interfaces, true)) {
             throw IntlSortException::doesNotImplementComparable($classname);
         }
 

@@ -25,7 +25,8 @@ class Comparator implements Comparable
     public function compare($value, $comparativeValue): int
     {
         try {
-            $compared = $this->collator->compare((string)$value, (string)$comparativeValue);
+            /** @var int $compared */
+            $compared = $this->collator->compare((string) $value, (string) $comparativeValue);
 
             if ($this->collator->getErrorCode() !== 0) {
                 throw IntlSortException::errorOnSort($this->collator->getErrorMessage());

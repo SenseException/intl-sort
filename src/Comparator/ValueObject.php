@@ -37,6 +37,7 @@ class ValueObject implements Comparable
     public function compare($value, $comparativeValue): int
     {
         try {
+            /** @var int $compared */
             $compared = $this->collator->compare(
                 $this->callAccessor($value),
                 $this->callAccessor($comparativeValue)
