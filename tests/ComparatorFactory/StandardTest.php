@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Budgegeria\IntlSort\Tests\ComparatorFactory;
 
 use Budgegeria\IntlSort\Comparator\Comparator;

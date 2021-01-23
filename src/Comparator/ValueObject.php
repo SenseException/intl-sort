@@ -6,29 +6,24 @@ namespace Budgegeria\IntlSort\Comparator;
 
 use Budgegeria\IntlSort\Exception\IntlSortException;
 use Collator;
+use IntlException;
 
 class ValueObject implements Comparable
 {
-    /**
-     * @var Collator
-     */
+    /** @var Collator */
     private $collator;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     private $methodOrPropertyName;
 
-    /**
-     * @var bool
-     */
+    /** @var bool */
     private $isProperty;
 
     public function __construct(Collator $collator, string $name, bool $isProperty)
     {
-        $this->collator = $collator;
+        $this->collator             = $collator;
         $this->methodOrPropertyName = $name;
-        $this->isProperty = $isProperty;
+        $this->isProperty           = $isProperty;
     }
 
     /**
@@ -46,14 +41,14 @@ class ValueObject implements Comparable
             if ($this->collator->getErrorCode() !== 0) {
                 throw IntlSortException::errorOnSort($this->collator->getErrorMessage());
             }
-        } catch (\IntlException $e) {
+        } catch (IntlException $e) {
             throw IntlSortException::errorOnSort($e->getMessage());
         }
 
         return $compared;
     }
 
-    private function callAccessor(object $valueObject) : string
+    private function callAccessor(object $valueObject): string
     {
         if ($this->isProperty) {
             return (string) $valueObject->{$this->methodOrPropertyName};

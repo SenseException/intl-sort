@@ -10,8 +10,10 @@ interface Sorter
 {
     /**
      * @param array<int|string> $values
-     * @throws IntlSortException
+     *
      * @return array<int|string>
+     *
+     * @throws IntlSortException
      */
     public function sort(array $values): array;
 }

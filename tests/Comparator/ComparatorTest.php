@@ -1,10 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Budgegeria\IntlSort\Tests\Comparator;
 
 use Budgegeria\IntlSort\Comparator\Comparator;
 use Budgegeria\IntlSort\Exception\IntlSortException;
 use Collator;
+use IntlException;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -12,9 +15,7 @@ use PHPUnit\Framework\TestCase;
  */
 class ComparatorTest extends TestCase
 {
-    /**
-     * @var Comparator
-     */
+    /** @var Comparator */
     private $comparator;
 
     protected function setUp(): void
@@ -73,7 +74,7 @@ class ComparatorTest extends TestCase
     {
         $collator = $this->createStub(Collator::class);
         $collator->method('compare')
-            ->willThrowException(new \IntlException('error'));
+            ->willThrowException(new IntlException('error'));
 
         $this->expectException(IntlSortException::class);
         (new Comparator($collator))->compare('a', 'b');

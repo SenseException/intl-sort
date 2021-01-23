@@ -19,10 +19,8 @@ class ValueObjectWithPropertyTest extends ValueObjectTest
      */
     protected function createObject($value): object
     {
-        return new class($value) {
-            /**
-             * @var int|string
-             */
+        return new class ($value) {
+            /** @var int|string */
             public $foo;
 
             /**

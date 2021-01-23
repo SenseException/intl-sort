@@ -5,13 +5,12 @@ declare(strict_types=1);
 namespace Budgegeria\IntlSort\Sorter;
 
 use Budgegeria\IntlSort\Comparator\Comparable;
+
 use function uksort;
 
 final class Key implements Sorter
 {
-    /**
-     * @var Comparable
-     */
+    /** @var Comparable */
     private $comparable;
 
     public function __construct(Comparable $comparable)

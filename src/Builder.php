@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Budgegeria\IntlSort;
 
 use Budgegeria\IntlSort\Comparator\Comparable;
-use Budgegeria\IntlSort\ComparatorFactory\Standard;
 use Budgegeria\IntlSort\ComparatorFactory\Factory;
+use Budgegeria\IntlSort\ComparatorFactory\Standard;
 use Budgegeria\IntlSort\Sorter\Asc;
 use Budgegeria\IntlSort\Sorter\Desc;
 use Budgegeria\IntlSort\Sorter\Key;
@@ -15,29 +15,21 @@ use Collator;
 
 class Builder
 {
-    /**
-     * @var Collator
-     */
+    /** @var Collator */
     private $collator;
 
-    /**
-     * @var bool
-     */
+    /** @var bool */
     private $isAsc = true;
 
-    /**
-     * @var bool
-     */
+    /** @var bool */
     private $isKeySort = false;
 
-    /**
-     * @var Factory
-     */
+    /** @var Factory */
     private $comparatorFactory;
 
     public function __construct(string $locale, ?Factory $comparatorFactory = null)
     {
-        $this->collator = new Collator($locale);
+        $this->collator          = new Collator($locale);
         $this->comparatorFactory = $comparatorFactory ?? new Standard();
     }
 

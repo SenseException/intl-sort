@@ -4,19 +4,17 @@ declare(strict_types=1);
 
 namespace Budgegeria\IntlSort\Tests;
 
+use Budgegeria\IntlSort\Builder;
 use Budgegeria\IntlSort\Comparator\Comparable;
 use Budgegeria\IntlSort\ComparatorFactory\Factory;
 use Budgegeria\IntlSort\Sorter\Sorter;
-use Budgegeria\IntlSort\Builder;
 use Collator;
 use Generator;
 use PHPUnit\Framework\TestCase;
 
 class BuilderTest extends TestCase
 {
-    /**
-     * @var Builder
-     */
+    /** @var Builder */
     private $builder;
 
     protected function setUp(): void
@@ -62,7 +60,7 @@ class BuilderTest extends TestCase
     public function testEnableNormalizationMode(): void
     {
         $expected = [0 => 'ạ̈', 1 => 'ạ̈'];
-        $result = $this->builder
+        $result   = $this->builder
             ->enableNormalizationMode()
             ->getSorter()
             ->sort(['ạ̈', 'ạ̈']);
@@ -73,7 +71,7 @@ class BuilderTest extends TestCase
     public function testDisableNormalizationMode(): void
     {
         $expected = [1 => 'ạ̈', 0 => 'ạ̈'];
-        $result = $this->builder
+        $result   = $this->builder
             ->enableNormalizationMode()
             ->disableNormalizationMode()
             ->getSorter()
@@ -85,7 +83,7 @@ class BuilderTest extends TestCase
     public function testEnableCaseLevel(): void
     {
         $expected = [1 => 'b', 0 => 'B', 2 => 'c'];
-        $result = $this->builder
+        $result   = $this->builder
             ->enableCaseLevel()
             ->primaryStrength()
             ->getSorter()
@@ -95,9 +93,9 @@ class BuilderTest extends TestCase
     }
 
     /**
-     * @dataProvider provideDisabledCaseLevelValues
-     *
      * @param string[] $values
+     *
+     * @dataProvider provideDisabledCaseLevelValues
      */
     public function testDisableCaseLevel(array $values): void
     {
@@ -121,9 +119,9 @@ class BuilderTest extends TestCase
     }
 
     /**
-     * @dataProvider providePrimaryStrengthValues
-     *
      * @param string[] $values
+     *
+     * @dataProvider providePrimaryStrengthValues
      */
     public function testPrimaryStrength(array $values): void
     {
@@ -145,9 +143,9 @@ class BuilderTest extends TestCase
     }
 
     /**
-     * @dataProvider provideSecondaryStrengthValues
-     *
      * @param string[] $values
+     *
+     * @dataProvider provideSecondaryStrengthValues
      */
     public function testSecondaryStrength(array $values): void
     {
@@ -169,9 +167,9 @@ class BuilderTest extends TestCase
     }
 
     /**
-     * @dataProvider provideTertiaryStrengthValues
-     *
      * @param string[] $values
+     *
+     * @dataProvider provideTertiaryStrengthValues
      */
     public function testTertiaryStrength(array $values): void
     {
@@ -195,10 +193,10 @@ class BuilderTest extends TestCase
     }
 
     /**
-     * @dataProvider provideQuarternaryStrengthValues
-     *
      * @param string[] $values
      * @param string[] $expected
+     *
+     * @dataProvider provideQuarternaryStrengthValues
      */
     public function testQuarternaryStrength(array $values, array $expected): void
     {
@@ -230,6 +228,7 @@ class BuilderTest extends TestCase
                 3 => 'Z',
             ],
         ];
+
         yield [
             [
                 'ab',
@@ -246,9 +245,9 @@ class BuilderTest extends TestCase
 
     public function testIdenticalStrength(): void
     {
-        $values = ['𝑎', '𝐚'];
+        $values   = ['𝑎', '𝐚'];
         $expected = [1 => '𝐚', 0 => '𝑎'];
-        $result = $this->builder
+        $result   = $this->builder
             ->identicalStrength()
             ->getSorter()
             ->sort($values);
@@ -259,7 +258,7 @@ class BuilderTest extends TestCase
     public function testUpperCaseFirst(): void
     {
         $expected = [1 => 'B', 0 => 'b'];
-        $result = $this->builder
+        $result   = $this->builder
             ->upperCaseFirst()
             ->getSorter()
             ->sort(['b', 'B']);
@@ -270,7 +269,7 @@ class BuilderTest extends TestCase
     public function testLowerCaseFirst(): void
     {
         $expected = [1 => 'b', 0 => 'B'];
-        $result = $this->builder
+        $result   = $this->builder
             ->upperCaseFirst()
             ->lowerCaseFirst()
             ->getSorter()
@@ -282,7 +281,7 @@ class BuilderTest extends TestCase
     public function testRemoveCaseFirst(): void
     {
         $expected = [1 => 'b', 0 => 'B'];
-        $result = $this->builder
+        $result   = $this->builder
             ->upperCaseFirst()
             ->removeCaseFirst()
             ->getSorter()
@@ -293,12 +292,12 @@ class BuilderTest extends TestCase
 
     public function testShiftedAlternateHandling(): void
     {
-        $values = ['USA', 'U.S.A'];
+        $values     = ['USA', 'U.S.A'];
         $unexpected = [
             1 => 'U.S.A',
             0 => 'USA',
         ];
-        $result = $this->builder
+        $result     = $this->builder
             ->shiftedAlternateHandling()
             ->getSorter()
             ->sort($values);
@@ -309,12 +308,12 @@ class BuilderTest extends TestCase
 
     public function testNonIgnorableAlternateHandling(): void
     {
-        $values = ['USA', 'U.S.A'];
+        $values   = ['USA', 'U.S.A'];
         $expected = [
             1 => 'U.S.A',
             0 => 'USA',
         ];
-        $result = $this->builder
+        $result   = $this->builder
             ->shiftedAlternateHandling()
             ->nonIgnorableAlternateHandling()
             ->getSorter()
@@ -325,12 +324,12 @@ class BuilderTest extends TestCase
 
     public function testEnableNumericCollation(): void
     {
-        $values = ['100', '4'];
+        $values   = ['100', '4'];
         $expected = [
             1 => '4',
             0 => '100',
         ];
-        $result = $this->builder
+        $result   = $this->builder
             ->enableNumericCollation()
             ->getSorter()
             ->sort($values);
@@ -340,12 +339,12 @@ class BuilderTest extends TestCase
 
     public function testDisableNumericCollation(): void
     {
-        $values = ['4', '100'];
+        $values   = ['4', '100'];
         $expected = [
             1 => '100',
             0 => '4',
         ];
-        $result = $this->builder
+        $result   = $this->builder
             ->enableNumericCollation()
             ->disableNumericCollation()
             ->getSorter()
@@ -362,7 +361,7 @@ class BuilderTest extends TestCase
             3 => 'coté',
             0 => 'côté',
         ];
-        $result = $this->builder
+        $result   = $this->builder
             ->enableFrenchCollation()
             ->getSorter()
             ->sort(['côté', 'côte', 'cote', 'coté']);
@@ -378,7 +377,7 @@ class BuilderTest extends TestCase
             1 => 'côte',
             0 => 'côté',
         ];
-        $result = $this->builder
+        $result   = $this->builder
             ->enableFrenchCollation()
             ->disableFrenchCollation()
             ->getSorter()
@@ -429,7 +428,7 @@ class BuilderTest extends TestCase
             3 => 1,
             2 => 'a',
             0 => 'b',
-            1 => 'c'
+            1 => 'c',
         ];
 
         self::assertSame($expected, $sorter->sort(['b', 'c', 'a', 1]));
@@ -441,7 +440,7 @@ class BuilderTest extends TestCase
             1 => 'c',
             0 => 'b',
             2 => 'a',
-            3 => 1
+            3 => 1,
         ];
 
         self::assertSame($expected, $sorter->sort(['b', 'c', 'a', 1]));

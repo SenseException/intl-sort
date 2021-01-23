@@ -9,15 +9,17 @@ use Budgegeria\IntlSort\Comparator\Comparable;
 use Budgegeria\IntlSort\Exception\IntlSortException;
 use Collator as IntlCollator;
 
+use function class_exists;
+use function class_implements;
+use function in_array;
+
 class SimpleCollator implements Factory
 {
-    /**
-     * @var class-string<\Budgegeria\IntlSort\Comparator\CollatorConstructor> $classname
-     */
+    /** @var class-string<CollatorConstructor> $classname */
     private $classname;
 
     /**
-     * @psalm-param class-string<\Budgegeria\IntlSort\Comparator\CollatorConstructor> $classname
+     * @psalm-param class-string<CollatorConstructor> $classname
      */
     public function __construct(string $classname)
     {

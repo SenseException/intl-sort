@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Budgegeria\IntlSort\Sorter;
 
+use function array_reverse;
+
 final class Desc implements Sorter
 {
-    /**
-     * @var Sorter
-     */
+    /** @var Sorter */
     private $sorter;
 
     public function __construct(Sorter $sorter)

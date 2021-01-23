@@ -34,7 +34,7 @@ class KeyTest extends TestCase
             'a' => 'foo',
             'b' => 'foo',
         ];
-        $expected = [
+        $expected  = [
             1 => 'foo',
             'a' => 'foo',
             'b' => 'foo',

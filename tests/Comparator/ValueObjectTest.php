@@ -8,6 +8,7 @@ use Budgegeria\IntlSort\Comparator\ValueObject;
 use Budgegeria\IntlSort\Exception\IntlSortException;
 use Collator;
 use Generator;
+use IntlException;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -15,9 +16,7 @@ use PHPUnit\Framework\TestCase;
  */
 abstract class ValueObjectTest extends TestCase
 {
-    /**
-     * @var ValueObject
-     */
+    /** @var ValueObject */
     private $comparator;
 
     protected function setUp(): void
@@ -81,7 +80,7 @@ abstract class ValueObjectTest extends TestCase
     {
         $collator = $this->createStub(Collator::class);
         $collator->method('compare')
-            ->willThrowException(new \IntlException('error'));
+            ->willThrowException(new IntlException('error'));
 
         $this->expectException(IntlSortException::class);
         $this->createComparator($collator)->compare($this->createObject('a'), $this->createObject('b'));
@@ -89,7 +88,6 @@ abstract class ValueObjectTest extends TestCase
 
     /**
      * @param int|string $value
-     *
      */
     abstract protected function createObject($value): object;
 

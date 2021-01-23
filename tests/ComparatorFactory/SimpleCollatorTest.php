@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace Budgegeria\IntlSort\Tests\ComparatorFactory;
 
 use ArrayObject;
-use Budgegeria\IntlSort\Comparator\CollatorConstructor;
 use Budgegeria\IntlSort\ComparatorFactory\SimpleCollator;
-use Collator as IntlCollator;
 use Budgegeria\IntlSort\Exception\IntlSortException;
+use Budgegeria\IntlSort\Tests\ComparatorFactory\Fixtures\Foo;
+use Collator as IntlCollator;
 use PHPUnit\Framework\TestCase;
 
 class SimpleCollatorTest extends TestCase
@@ -37,23 +37,5 @@ class SimpleCollatorTest extends TestCase
          * @phpstan-ignore-next-line
          */
         new SimpleCollator('NotExistent');
-    }
-}
-
-class Foo implements CollatorConstructor
-{
-    /**
-     * @var IntlCollator
-     */
-    private $collator;
-
-    public function __construct(IntlCollator $collator)
-    {
-        $this->collator = $collator;
-    }
-
-    public function compare($value, $comparativeValue): int
-    {
-        return 0;
     }
 }

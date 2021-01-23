@@ -6,6 +6,8 @@ namespace Budgegeria\IntlSort\Exception;
 
 use Exception;
 
+use function sprintf;
+
 class IntlSortException extends Exception
 {
     public static function errorOnSort(string $errorMessage): self

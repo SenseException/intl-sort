@@ -6,12 +6,11 @@ namespace Budgegeria\IntlSort\Comparator;
 
 use Budgegeria\IntlSort\Exception\IntlSortException;
 use Collator;
+use IntlException;
 
 class Comparator implements Comparable
 {
-    /**
-     * @var Collator
-     */
+    /** @var Collator */
     private $collator;
 
     public function __construct(Collator $collator)
@@ -31,7 +30,7 @@ class Comparator implements Comparable
             if ($this->collator->getErrorCode() !== 0) {
                 throw IntlSortException::errorOnSort($this->collator->getErrorMessage());
             }
-        } catch (\IntlException $e) {
+        } catch (IntlException $e) {
             throw IntlSortException::errorOnSort($e->getMessage());
         }
 
