@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Budgegeria\IntlSort\Tests\Comparator;
 
+use Budgegeria\IntlSort\Collator;
 use Budgegeria\IntlSort\Comparator\Comparator;
 use Budgegeria\IntlSort\Exception\IntlSortException;
-use Collator;
 use IntlException;
 use PHPUnit\Framework\TestCase;
 

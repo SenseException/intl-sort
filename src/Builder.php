@@ -11,7 +11,6 @@ use Budgegeria\IntlSort\Sorter\Asc;
 use Budgegeria\IntlSort\Sorter\Desc;
 use Budgegeria\IntlSort\Sorter\Key;
 use Budgegeria\IntlSort\Sorter\Sorter;
-use Collator;
 
 class Builder
 {

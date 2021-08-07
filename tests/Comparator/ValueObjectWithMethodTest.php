@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Budgegeria\IntlSort\Tests\Comparator;
 
+use Budgegeria\IntlSort\Collator;
 use Budgegeria\IntlSort\Comparator\ValueObject;
-use Collator;
 
 class ValueObjectWithMethodTest extends ValueObjectTest
 {

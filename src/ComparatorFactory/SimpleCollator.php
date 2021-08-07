@@ -7,7 +7,7 @@ namespace Budgegeria\IntlSort\ComparatorFactory;
 use Budgegeria\IntlSort\Comparator\CollatorConstructor;
 use Budgegeria\IntlSort\Comparator\Comparable;
 use Budgegeria\IntlSort\Exception\IntlSortException;
-use Collator as IntlCollator;
+use Collator;
 
 use function class_exists;
 use function class_implements;
@@ -37,7 +37,7 @@ class SimpleCollator implements Factory
         $this->classname = $classname;
     }
 
-    public function create(IntlCollator $collator): Comparable
+    public function create(Collator $collator): Comparable
     {
         $classname = $this->classname;
 

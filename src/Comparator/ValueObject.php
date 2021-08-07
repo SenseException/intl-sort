@@ -48,12 +48,15 @@ class ValueObject implements Comparable
         return $compared;
     }
 
-    private function callAccessor(object $valueObject): string
+    /**
+     * @return mixed
+     */
+    private function callAccessor(object $valueObject)
     {
         if ($this->isProperty) {
-            return (string) $valueObject->{$this->methodOrPropertyName};
+            return $valueObject->{$this->methodOrPropertyName};
         }
 
-        return (string) $valueObject->{$this->methodOrPropertyName}();
+        return $valueObject->{$this->methodOrPropertyName}();
     }
 }
