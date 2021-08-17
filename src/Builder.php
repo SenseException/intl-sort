@@ -199,6 +199,27 @@ class Builder
         return $this;
     }
 
+    public function nullFirst(): self
+    {
+        $this->collator->setNullableSort(Collator::NULL_VALUES_FIRST);
+
+        return $this;
+    }
+
+    public function nullLast(): self
+    {
+        $this->collator->setNullableSort(Collator::NULL_VALUES_LAST);
+
+        return $this;
+    }
+
+    public function removeNullPosition(): self
+    {
+        $this->collator->setNullableSort(null);
+
+        return $this;
+    }
+
     public function getSorter(): Sorter
     {
         $comparator = $this->getComparator();

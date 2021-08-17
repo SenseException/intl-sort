@@ -87,6 +87,14 @@ Configures the sort order and which part of the elements are the focus for the s
 * **orderByKeys()** - order by keys of the elements.
 * **orderByValues()** - order by the values of the elements
 
+### Null value position
+
+Positioning of null values at the start or at the end of all elements.
+
+* **nullFirst()** - set null values at the beginning.
+* **nullLast()** - set null values at the end.
+* **removeNullPosition()** - removes the null value sort config.
+
 ### getSorter()
 
 Returns a `Sorter` instance with the given configuration. Every call creates a new instance.
