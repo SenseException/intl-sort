@@ -17,8 +17,8 @@
   },
   "require-dev": {
     "infection/infection": "^0.18",
-    "phpstan/phpstan": "^0.12",
-    "phpstan/phpstan-phpunit": "^0.12",
+    "phpstan/phpstan": "^1.0",
+    "phpstan/phpstan-phpunit": "^1.0",
     "phpunit/phpunit": "^9.5",
     "psalm/plugin-phpunit": "^0.15",
     "vimeo/psalm": "^4.3",
