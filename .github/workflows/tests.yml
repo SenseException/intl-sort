@@ -12,10 +12,6 @@ jobs:
     strategy:
       matrix:
         include:
-         - php-versions: "7.3"
-           continue-on-error: false
-         - php-versions: "7.4"
-           continue-on-error: false
          - php-versions: "8.0"
            continue-on-error: false
          - php-versions: "8.1"
