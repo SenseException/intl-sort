@@ -10,26 +10,11 @@ use IntlException;
 
 class ValueObject implements Comparable
 {
-    /** @var Collator */
-    private $collator;
-
-    /** @var string */
-    private $methodOrPropertyName;
-
-    /** @var bool */
-    private $isProperty;
-
-    public function __construct(Collator $collator, string $name, bool $isProperty)
+    public function __construct(private Collator $collator, private string $methodOrPropertyName, private bool $isProperty)
     {
-        $this->collator             = $collator;
-        $this->methodOrPropertyName = $name;
-        $this->isProperty           = $isProperty;
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function compare($value, $comparativeValue): int
+    public function compare(mixed $value, mixed $comparativeValue): int
     {
         try {
             /** @var int $compared */
@@ -48,10 +33,7 @@ class ValueObject implements Comparable
         return $compared;
     }
 
-    /**
-     * @return mixed
-     */
-    private function callAccessor(object $valueObject)
+    private function callAccessor(object $valueObject): mixed
     {
         if ($this->isProperty) {
             return $valueObject->{$this->methodOrPropertyName};

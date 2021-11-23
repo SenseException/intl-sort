@@ -10,12 +10,8 @@ use function uasort;
 
 final class Asc implements Sorter
 {
-    /** @var Comparable */
-    private $comparable;
-
-    public function __construct(Comparable $comparable)
+    public function __construct(private Comparable $comparable)
     {
-        $this->comparable = $comparable;
     }
 
     /**
@@ -26,11 +22,7 @@ final class Asc implements Sorter
         $comparable = $this->comparable;
         uasort(
             $values,
-            /**
-             * @param mixed $first
-             * @param mixed $second
-             */
-            static function ($first, $second) use ($comparable): int {
+            static function (mixed $first, mixed $second) use ($comparable): int {
                 return $comparable->compare($first, $second);
             }
         );

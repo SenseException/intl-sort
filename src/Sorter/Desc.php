@@ -8,12 +8,8 @@ use function array_reverse;
 
 final class Desc implements Sorter
 {
-    /** @var Sorter */
-    private $sorter;
-
-    public function __construct(Sorter $sorter)
+    public function __construct(private Sorter $sorter)
     {
-        $this->sorter = $sorter;
     }
 
     /**

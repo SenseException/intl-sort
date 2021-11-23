@@ -14,8 +14,7 @@ class Collator extends IntlCollector
     public const NULL_VALUES_FIRST = 1;
     public const NULL_VALUES_LAST  = 2;
 
-    /** @var int|null */
-    private $nullableSort;
+    private ?int $nullableSort = null;
 
     public function setNullableSort(?int $value): void
     {

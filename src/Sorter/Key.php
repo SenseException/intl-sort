@@ -10,12 +10,8 @@ use function uksort;
 
 final class Key implements Sorter
 {
-    /** @var Comparable */
-    private $comparable;
-
-    public function __construct(Comparable $comparable)
+    public function __construct(private Comparable $comparable)
     {
-        $this->comparable = $comparable;
     }
 
     /**
@@ -26,11 +22,7 @@ final class Key implements Sorter
         $comparable = $this->comparable;
         uksort(
             $values,
-            /**
-             * @param mixed $first
-             * @param mixed $second
-             */
-            static function ($first, $second) use ($comparable): int {
+            static function (mixed $first, mixed $second) use ($comparable): int {
                 return $comparable->compare($first, $second);
             }
         );

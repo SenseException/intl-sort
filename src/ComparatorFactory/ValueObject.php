@@ -10,16 +10,8 @@ use Collator;
 
 class ValueObject implements Factory
 {
-    /** @var string */
-    private $methodOrPropertyName;
-
-    /** @var bool */
-    private $isProperty;
-
-    public function __construct(string $name, bool $isProperty = false)
+    public function __construct(private string $methodOrPropertyName, private bool $isProperty = false)
     {
-        $this->methodOrPropertyName = $name;
-        $this->isProperty           = $isProperty;
     }
 
     public function create(Collator $collator): Comparable

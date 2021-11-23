@@ -9,10 +9,7 @@ use Budgegeria\IntlSort\Exception\IntlSortException;
 interface Comparable
 {
     /**
-     * @param mixed $value
-     * @param mixed $comparativeValue
-     *
      * @throws IntlSortException
      */
-    public function compare($value, $comparativeValue): int;
+    public function compare(mixed $value, mixed $comparativeValue): int;
 }

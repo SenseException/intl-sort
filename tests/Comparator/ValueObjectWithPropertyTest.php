@@ -14,21 +14,11 @@ class ValueObjectWithPropertyTest extends ValueObjectTest
         return new ValueObject($collator, 'foo', true);
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    protected function createObject($value): object
+    protected function createObject(int|string $value): object
     {
         return new class ($value) {
-            /** @var int|string */
-            public $foo;
-
-            /**
-             * @param int|string $value
-             */
-            public function __construct($value)
+            public function __construct(public int|string $foo)
             {
-                $this->foo = $value;
             }
         };
     }

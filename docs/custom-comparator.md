@@ -58,7 +58,7 @@ class ProductNameComparator implements Comparable
     /**
      * {@inheritDoc}
      */
-    public function compare($product, $comparativeProduct): int
+    public function compare(mixed $product, mixed $comparativeProduct): int
     {
         // Use Product::getName() for comparision.
         return $this->collator->compare($product->getName(), $comparativeProduct->getName());

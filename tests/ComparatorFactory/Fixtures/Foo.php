@@ -9,18 +9,11 @@ use Collator;
 
 class Foo implements CollatorConstructor
 {
-    /** @var Collator */
-    private $collator;
-
-    public function __construct(Collator $collator)
+    public function __construct(private Collator $collator)
     {
-        $this->collator = $collator;
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function compare($value, $comparativeValue): int
+    public function compare(mixed $value, mixed $comparativeValue): int
     {
         return (int) $this->collator->compare($value, $comparativeValue);
     }

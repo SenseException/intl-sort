@@ -14,17 +14,13 @@ use Budgegeria\IntlSort\Sorter\Sorter;
 
 class Builder
 {
-    /** @var Collator */
-    private $collator;
+    private Collator $collator;
 
-    /** @var bool */
-    private $isAsc = true;
+    private bool $isAsc = true;
 
-    /** @var bool */
-    private $isKeySort = false;
+    private bool $isKeySort = false;
 
-    /** @var Factory */
-    private $comparatorFactory;
+    private Factory $comparatorFactory;
 
     public function __construct(string $locale, ?Factory $comparatorFactory = null)
     {

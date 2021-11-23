@@ -16,8 +16,7 @@ use PHPUnit\Framework\TestCase;
  */
 abstract class ValueObjectTest extends TestCase
 {
-    /** @var ValueObject */
-    private $comparator;
+    private ValueObject $comparator;
 
     protected function setUp(): void
     {
@@ -86,10 +85,7 @@ abstract class ValueObjectTest extends TestCase
         $this->createComparator($collator)->compare($this->createObject('a'), $this->createObject('b'));
     }
 
-    /**
-     * @param int|string $value
-     */
-    abstract protected function createObject($value): object;
+    abstract protected function createObject(int|string $value): object;
 
     abstract protected function createComparator(Collator $collator): ValueObject;
 }
