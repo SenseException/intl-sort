@@ -39,8 +39,6 @@ class SimpleCollator implements Factory
 
     public function create(Collator $collator): Comparable
     {
-        $classname = $this->classname;
-
-        return new $classname($collator);
+        return new $this->classname($collator);
     }
 }
