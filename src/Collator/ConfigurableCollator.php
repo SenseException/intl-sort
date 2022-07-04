@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace Budgegeria\IntlSort\Collator;
 
+use Budgegeria\IntlSort\Exception\IntlSortException;
 use Collator as IntlCollator;
+use IntlException;
 
 use function assert;
 use function is_int;
@@ -15,6 +17,9 @@ class ConfigurableCollator implements Collator
     {
     }
 
+    /**
+     * @throws IntlSortException
+     */
     public function compare(mixed $value, mixed $comparativeValue): int
     {
         if (($comparativeValue === null || $value === null) && $this->config->getNullableSort() === Configuration::NULL_VALUES_LAST) {
@@ -25,10 +30,18 @@ class ConfigurableCollator implements Collator
             return Configuration::NULL_VALUES_FIRST;
         }
 
-        $result = $this->collator->compare((string) $value, (string) $comparativeValue);
+        try {
+            $compared = $this->collator->compare((string) $value, (string) $comparativeValue);
 
-        assert(is_int($result));
+            assert(is_int($compared));
 
-        return $result;
+            if ($this->collator->getErrorCode() !== 0) {
+                throw IntlSortException::errorOnSort($this->collator->getErrorMessage());
+            }
+        } catch (IntlException $e) {
+            throw IntlSortException::errorOnSort($e->getMessage());
+        }
+
+        return $compared;
     }
 }
