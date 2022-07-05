@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Budgegeria\IntlSort\ComparatorFactory;
 
+use Budgegeria\IntlSort\Collator\Collator;
 use Budgegeria\IntlSort\Comparator\Comparable;
 use Budgegeria\IntlSort\Comparator\ValueObject as Comparator;
-use Collator;
 
 class ValueObject implements Factory
 {

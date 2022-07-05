@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Budgegeria\IntlSort\Tests\ComparatorFactory;
 
+use Budgegeria\IntlSort\Collator\Collator;
 use Budgegeria\IntlSort\Comparator\ValueObject;
 use Budgegeria\IntlSort\ComparatorFactory\ValueObject as Factory;
-use Collator;
 use PHPUnit\Framework\TestCase;
 
 class ValueObjectTest extends TestCase

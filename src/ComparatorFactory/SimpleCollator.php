@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Budgegeria\IntlSort\ComparatorFactory;
 
+use Budgegeria\IntlSort\Collator\Collator;
 use Budgegeria\IntlSort\Comparator\CollatorConstructor;
 use Budgegeria\IntlSort\Comparator\Comparable;
 use Budgegeria\IntlSort\Exception\IntlSortException;
-use Collator;
 
 use function class_exists;
 use function class_implements;

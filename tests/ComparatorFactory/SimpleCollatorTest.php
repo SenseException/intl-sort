@@ -5,17 +5,17 @@ declare(strict_types=1);
 namespace Budgegeria\IntlSort\Tests\ComparatorFactory;
 
 use ArrayObject;
+use Budgegeria\IntlSort\Collator\Collator;
 use Budgegeria\IntlSort\ComparatorFactory\SimpleCollator;
 use Budgegeria\IntlSort\Exception\IntlSortException;
 use Budgegeria\IntlSort\Tests\ComparatorFactory\Fixtures\Foo;
-use Collator as IntlCollator;
 use PHPUnit\Framework\TestCase;
 
 class SimpleCollatorTest extends TestCase
 {
     public function testCreate(): void
     {
-        self::assertInstanceOf(Foo::class, (new SimpleCollator(Foo::class))->create(new IntlCollator('de_DE')));
+        self::assertInstanceOf(Foo::class, (new SimpleCollator(Foo::class))->create($this->createStub(Collator::class)));
     }
 
     public function testClassIsNotAComparable(): void

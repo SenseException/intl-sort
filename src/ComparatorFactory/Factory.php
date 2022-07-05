@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Budgegeria\IntlSort\ComparatorFactory;
 
+use Budgegeria\IntlSort\Collator\Collator;
 use Budgegeria\IntlSort\Comparator\Comparable;
-use Collator;
 
 interface Factory
 {
