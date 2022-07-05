@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Budgegeria\IntlSort;
 
+use Budgegeria\IntlSort\Collator\ConfigurableCollator;
+use Budgegeria\IntlSort\Collator\Configuration;
 use Budgegeria\IntlSort\Comparator\Comparable;
 use Budgegeria\IntlSort\ComparatorFactory\Factory;
 use Budgegeria\IntlSort\ComparatorFactory\Standard;
@@ -11,6 +13,7 @@ use Budgegeria\IntlSort\Sorter\Asc;
 use Budgegeria\IntlSort\Sorter\Desc;
 use Budgegeria\IntlSort\Sorter\Key;
 use Budgegeria\IntlSort\Sorter\Sorter;
+use Collator;
 
 class Builder
 {
@@ -22,9 +25,12 @@ class Builder
 
     private Factory $comparatorFactory;
 
+    private Configuration $configuration;
+
     public function __construct(string $locale, ?Factory $comparatorFactory = null)
     {
         $this->collator          = new Collator($locale);
+        $this->configuration     = new Configuration();
         $this->comparatorFactory = $comparatorFactory ?? new Standard();
     }
 
@@ -197,21 +203,21 @@ class Builder
 
     public function nullFirst(): self
     {
-        $this->collator->setNullableSort(Collator::NULL_VALUES_FIRST);
+        $this->configuration->setNullableSort(Configuration::NULL_VALUES_FIRST);
 
         return $this;
     }
 
     public function nullLast(): self
     {
-        $this->collator->setNullableSort(Collator::NULL_VALUES_LAST);
+        $this->configuration->setNullableSort(Configuration::NULL_VALUES_LAST);
 
         return $this;
     }
 
     public function removeNullPosition(): self
     {
-        $this->collator->setNullableSort(null);
+        $this->configuration->setNullableSort(null);
 
         return $this;
     }
@@ -234,6 +240,6 @@ class Builder
 
     public function getComparator(): Comparable
     {
-        return $this->comparatorFactory->create($this->collator);
+        return $this->comparatorFactory->create(new ConfigurableCollator($this->collator, $this->configuration));
     }
 }

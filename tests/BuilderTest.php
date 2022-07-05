@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace Budgegeria\IntlSort\Tests;
 
 use Budgegeria\IntlSort\Builder;
+use Budgegeria\IntlSort\Collator\Collator;
 use Budgegeria\IntlSort\Comparator\Comparable;
 use Budgegeria\IntlSort\ComparatorFactory\Factory;
 use Budgegeria\IntlSort\Sorter\Sorter;
-use Collator;
 use Generator;
 use PHPUnit\Framework\TestCase;
 
