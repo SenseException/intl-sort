@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace Budgegeria\IntlSort\Tests\Sorter;
 
 use Budgegeria\IntlSort\Collator;
+use Budgegeria\IntlSort\Collator\ConfigurableCollator;
+use Budgegeria\IntlSort\Collator\Configuration;
 use Budgegeria\IntlSort\Comparator\Comparable;
 use Budgegeria\IntlSort\Comparator\Comparator;
 use Budgegeria\IntlSort\Exception\IntlSortException;
@@ -28,7 +30,7 @@ class AscTest extends TestCase
 
     public function testSortIntegration(): void
     {
-        $sorter = new Asc(new Comparator(new Collator('en_US')));
+        $sorter = new Asc(new Comparator(new ConfigurableCollator(new Collator('en_US'), new Configuration())));
 
         self::assertSame([3 => 1, 2 => 'a', 0 => 'b', 1 => 'c'], $sorter->sort(['b', 'c', 'a', 1]));
     }

@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace Budgegeria\IntlSort\Tests\Sorter;
 
 use Budgegeria\IntlSort\Collator;
+use Budgegeria\IntlSort\Collator\ConfigurableCollator;
+use Budgegeria\IntlSort\Collator\Configuration;
 use Budgegeria\IntlSort\Comparator\Comparable;
 use Budgegeria\IntlSort\Comparator\Comparator;
 use Budgegeria\IntlSort\Exception\IntlSortException;
@@ -41,7 +43,7 @@ class KeyTest extends TestCase
             'c' => 'foo',
         ];
 
-        $sorter = new Key(new Comparator(new Collator('en_US')));
+        $sorter = new Key(new Comparator(new ConfigurableCollator(new Collator('en_US'), new Configuration())));
 
         self::assertSame($expected, $sorter->sort($sortArray));
     }
