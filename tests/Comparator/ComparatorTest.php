@@ -5,9 +5,10 @@ declare(strict_types=1);
 namespace Budgegeria\IntlSort\Tests\Comparator;
 
 use Budgegeria\IntlSort\Collator;
+use Budgegeria\IntlSort\Collator\ConfigurableCollator;
+use Budgegeria\IntlSort\Collator\Configuration;
 use Budgegeria\IntlSort\Comparator\Comparator;
 use Budgegeria\IntlSort\Exception\IntlSortException;
-use IntlException;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -19,19 +20,16 @@ class ComparatorTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->comparator = new Comparator(new Collator('en_US'));
+        $this->comparator = new Comparator(new ConfigurableCollator(new Collator('en_US'), new Configuration()));
     }
 
     public function testDelegateToCollator(): void
     {
-        $collator = $this->createMock(Collator::class);
+        $collator = $this->createMock(ConfigurableCollator::class);
         $collator->expects(self::once())
             ->method('compare')
             ->with('1', 'a')
             ->willReturn(-1);
-        $collator->expects(self::once())
-            ->method('getErrorCode')
-            ->willReturn(0);
 
         self::assertSame(-1, (new Comparator($collator))->compare(1, 'a'));
     }
@@ -57,23 +55,11 @@ class ComparatorTest extends TestCase
         self::assertSame(-1, $this->comparator->compare(1, 'a'));
     }
 
-    public function testInvokesError(): void
-    {
-        $collator = $this->createStub(Collator::class);
-        $collator->method('getErrorCode')
-            ->willReturn(42);
-        $collator->method('getErrorMessage')
-            ->willReturn('error');
-
-        $this->expectException(IntlSortException::class);
-        (new Comparator($collator))->compare('a', 'b');
-    }
-
     public function testThrowsIntlException(): void
     {
-        $collator = $this->createStub(Collator::class);
+        $collator = $this->createStub(ConfigurableCollator::class);
         $collator->method('compare')
-            ->willThrowException(new IntlException('error'));
+            ->willThrowException(new IntlSortException('error'));
 
         $this->expectException(IntlSortException::class);
         (new Comparator($collator))->compare('a', 'b');
