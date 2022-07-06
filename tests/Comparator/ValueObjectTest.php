@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Budgegeria\IntlSort\Tests\Comparator;
 
-use Budgegeria\IntlSort\Collator;
 use Budgegeria\IntlSort\Comparator\ValueObject;
 use Budgegeria\IntlSort\Exception\IntlSortException;
+use Collator;
 use Generator;
 use IntlException;
 use PHPUnit\Framework\TestCase;
@@ -66,6 +66,8 @@ abstract class ValueObjectTest extends TestCase
     public function testInvokesError(): void
     {
         $collator = $this->createStub(Collator::class);
+        $collator->method('compare')
+            ->willReturn(0);
         $collator->method('getErrorCode')
             ->willReturn(42);
         $collator->method('getErrorMessage')

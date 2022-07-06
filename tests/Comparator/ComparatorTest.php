@@ -4,11 +4,10 @@ declare(strict_types=1);
 
 namespace Budgegeria\IntlSort\Tests\Comparator;
 
-use Budgegeria\IntlSort\Collator;
 use Budgegeria\IntlSort\Collator\ConfigurableCollator;
-use Budgegeria\IntlSort\Collator\Configuration;
 use Budgegeria\IntlSort\Comparator\Comparator;
 use Budgegeria\IntlSort\Exception\IntlSortException;
+use Budgegeria\IntlSort\Tests\Collator;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -16,11 +15,13 @@ use PHPUnit\Framework\TestCase;
  */
 class ComparatorTest extends TestCase
 {
+    use Collator;
+
     private Comparator $comparator;
 
     protected function setUp(): void
     {
-        $this->comparator = new Comparator(new ConfigurableCollator(new Collator('en_US'), new Configuration()));
+        $this->comparator = new Comparator($this->createCollator());
     }
 
     public function testDelegateToCollator(): void

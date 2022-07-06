@@ -4,16 +4,17 @@ declare(strict_types=1);
 
 namespace Budgegeria\IntlSort\Tests\Comparator;
 
-use Budgegeria\IntlSort\Collator;
-use Budgegeria\IntlSort\Collator\ConfigurableCollator;
-use Budgegeria\IntlSort\Collator\Configuration;
 use Budgegeria\IntlSort\Comparator\ValueObject;
+use Budgegeria\IntlSort\Tests\Collator as CollatorTrait;
+use Collator;
 
 class ValueObjectWithPropertyTest extends ValueObjectTest
 {
+    use CollatorTrait;
+
     protected function createComparator(Collator $collator): ValueObject
     {
-        return new ValueObject(new ConfigurableCollator($collator, new Configuration()), 'foo', true);
+        return new ValueObject($this->createCollator($collator), 'foo', true);
     }
 
     protected function createObject(int|string $value): object

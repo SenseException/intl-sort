@@ -4,17 +4,17 @@ declare(strict_types=1);
 
 namespace Budgegeria\IntlSort\Tests\Sorter;
 
-use Budgegeria\IntlSort\Collator;
-use Budgegeria\IntlSort\Collator\ConfigurableCollator;
-use Budgegeria\IntlSort\Collator\Configuration;
 use Budgegeria\IntlSort\Comparator\Comparable;
 use Budgegeria\IntlSort\Comparator\Comparator;
 use Budgegeria\IntlSort\Exception\IntlSortException;
 use Budgegeria\IntlSort\Sorter\Key;
+use Budgegeria\IntlSort\Tests\Collator;
 use PHPUnit\Framework\TestCase;
 
 class KeyTest extends TestCase
 {
+    use Collator;
+
     public function testSort(): void
     {
         $comparator = $this->createMock(Comparable::class);
@@ -43,7 +43,7 @@ class KeyTest extends TestCase
             'c' => 'foo',
         ];
 
-        $sorter = new Key(new Comparator(new ConfigurableCollator(new Collator('en_US'), new Configuration())));
+        $sorter = new Key(new Comparator($this->createCollator()));
 
         self::assertSame($expected, $sorter->sort($sortArray));
     }
