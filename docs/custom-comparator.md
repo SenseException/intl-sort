@@ -40,8 +40,8 @@ in an example class called `ProductNameComparator`:
 ```php
 namespace Your\ProjectNamespace;
 
+use Budgegeria\IntlSort\Collator\Collator;
 use Budgegeria\IntlSort\Comparator\Comparable;
-use Collator;
 
 class ProductNameComparator implements Comparable
 {
@@ -66,12 +66,12 @@ class ProductNameComparator implements Comparable
 }
 ```
 
-Allow your `ProductNameComparator` the injection of the Intl `Collator` in the constructor, which is the instance that
-contains the configuration of the sorter builder.
+Allow your `ProductNameComparator` the injection of the `Budgegeria\IntlSort\Collator\Collator` in the constructor, 
+which is the instance that contains the configuration of the sorter builder.
 
 The comparator has to return `-1` if the compared value of the first object is less than the second one,
-`1` if it's greater and `0` if both are equal. If you directly use the given `Collator` instance, its
-`Collator::compare()` method will handle this for you.
+`1` if it's greater and `0` if both are equal. If you directly use the given `Budgegeria\IntlSort\Collator\Collator`
+instance, its `Collator::compare()` method will handle this for you.
 
 Don't forget to handle errors in your class. You have to use `Budgegeria\IntlSort\Exception\IntlSortException`
 in case you want to throw an exception.
@@ -80,17 +80,17 @@ This is a small example and the complexity of comparision is up to you and your 
 
 ### Create a Comparator factory
 
-The `Budgegeria\IntlSort\Builder` is always creating a new `Comparable` instance when `Builder::getSorter()`
-or `Builder::getComparator()` is called. The same goes for your `ProductNameComparator`. To be able to do that,
+The `Budgegeria\IntlSort\Builder` is always creating a new `Comparable` instance when `Builder::getComparator()`
+is called or inside `Builder::getSorter()`. The same goes for your `ProductNameComparator`. To be able to do that,
 you also need to create a factory which is responsible for the creation of your custom comparator. It
 can look like this:
 
 ```php
 namespace Your\ProjectNamespace;
 
+use Budgegeria\IntlSort\Collator\Collator;
 use Budgegeria\IntlSort\Comparator\Comparable;
 use Budgegeria\IntlSort\ComparatorFactory\Factory;
-use Collator;
 use Your\ProjectNamespace\ProductNameComparator;
 
 class ProductNameComparatorFactory implements Factory
@@ -103,9 +103,9 @@ class ProductNameComparatorFactory implements Factory
 ```
 
 A factory has also the advantage to inject dependencies into a constructor in case your
-comparator needs more than just a `Collator`. In case you just have a dependency to a `Collator`,
-you can also use the `Budgegeria\IntlSort\ComparatorFactory\SimpleCollator` factory instead of
-creating your own one.
+comparator needs more than just a `Collator`. In case you just have a dependency to a 
+`Budgegeria\IntlSort\Collator\Collator`, you can also use the 
+`Budgegeria\IntlSort\ComparatorFactory\SimpleCollator` factory instead of creating your own one.
 
 ### Get your comparator into the sorter builder
 
@@ -130,7 +130,7 @@ $sortedProducts = $sorter->sort($products);
 ```
 
 When `$sortBuilder->getSorter()` is invoked, your factory will create and return an instance of
-`ProductNameComparator` that sorts an array of `Product`-instances by the product name.
+`ProductNameComparator` for the sorter that sorts an array of `Product`-instances by the product name.
 
 Now you can order your products with all the different possible configurations allowed by intl-sort
 to the different needs of each supported country/region throughout your project

@@ -86,9 +86,11 @@ instead of creating your own factory class. SimpleCollator can be used with ever
 as constructor dependency.
 
 ```php
+use Budgegeria\IntlSort\Collator\Collator;
+
 class MyComparator implements \Budgegeria\IntlSort\Comparator\CollatorConstructor
 {
-    public function __construct(\Collator $collator)
+    public function __construct(Collator $collator)
     {
         // ...
     }
