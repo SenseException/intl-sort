@@ -30,7 +30,7 @@ integer or string values of the same accessor (class method or property) that wi
 objects based on the builder's configuration.
 
 ```php
-$factory = new \Budgegeria\IntlSort\ComparatorFactory\ValueObject('methodName');
+$factory = new \Budgegeria\IntlSort\ComparatorFactory\ValueObject::createForMethodCall('methodName');
 $sortBuilder = new \Budgegeria\IntlSort\Builder('de_DE', $factory);
 ```
 
@@ -53,7 +53,7 @@ you can sort all elements of `Foo` by the method name `Foo::bar()` when you inst
 name:
 
 ```php
-$factory = new \Budgegeria\IntlSort\ComparatorFactory\ValueObject('bar');
+$factory = new \Budgegeria\IntlSort\ComparatorFactory\ValueObject::createForMethodCall('bar');
 ```
 
 Sorting by a method's return value only works if that method doesn't require an argument.
@@ -73,7 +73,7 @@ you can sort all elements of `Foo` by the property name `Foo::$bar` when you ins
 name:
 
 ```php
-$factory = new \Budgegeria\IntlSort\ComparatorFactory\ValueObject('bar', true);
+$factory = new \Budgegeria\IntlSort\ComparatorFactory\ValueObject::createForPropertyCall('bar');
 ```
 
 The second argument is being used to mark the name in argument one as a property name. Using `false` will make the

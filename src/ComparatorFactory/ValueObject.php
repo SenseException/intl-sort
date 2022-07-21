@@ -10,12 +10,22 @@ use Budgegeria\IntlSort\Comparator\ValueObject as Comparator;
 
 class ValueObject implements Factory
 {
-    public function __construct(private string $methodOrPropertyName, private bool $isProperty = false)
+    private function __construct(private string $methodOrPropertyName, private bool $isProperty = false)
     {
     }
 
     public function create(Collator $collator): Comparable
     {
         return new Comparator($collator, $this->methodOrPropertyName, $this->isProperty);
+    }
+
+    public static function createForMethodCall(string $methodName): self
+    {
+        return new self($methodName, false);
+    }
+
+    public static function createForPropertyCall(string $propertyName): self
+    {
+        return new self($propertyName, true);
     }
 }

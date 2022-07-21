@@ -14,7 +14,7 @@ class ValueObjectTest extends TestCase
     public function testCreateForMethod(): void
     {
         $collator   = $this->createStub(Collator::class);
-        $factory    = new Factory('foo');
+        $factory    = Factory::createForMethodCall('foo');
         $comparator = new ValueObject($collator, 'foo', false);
 
         self::assertEquals($comparator, $factory->create($collator));
@@ -23,7 +23,7 @@ class ValueObjectTest extends TestCase
     public function testCreateForProperty(): void
     {
         $collator   = $this->createStub(Collator::class);
-        $factory    = new Factory('foo', true);
+        $factory    = Factory::createForPropertyCall('foo');
         $comparator = new ValueObject($collator, 'foo', true);
 
         self::assertEquals($comparator, $factory->create($collator));
