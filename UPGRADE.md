@@ -13,3 +13,12 @@ You need to update your PHP version.
 
 A lot of new type hints and return types were added with the switch to PHP 8. Please adapt
 your code.
+
+## BC break: ValueObject factory can only be instantiated with named constructors
+
+`Budgegeria\IntlSort\ComparatorFactory\ValueObject::__construct()` is private. To create a new
+instance you have to use one of the following named constructors:
+
+`Budgegeria\IntlSort\ComparatorFactory\ValueObject::createForMethodCall($methodName)` for methods
+`Budgegeria\IntlSort\ComparatorFactory\ValueObject::createForPropertyCall($propertyName)` for
+properties.
