@@ -10,7 +10,7 @@ use Budgegeria\IntlSort\Comparator\ValueObject as Comparator;
 
 class ValueObject implements Factory
 {
-    private function __construct(private string $methodOrPropertyName, private bool $isProperty = false)
+    private function __construct(private string $methodOrPropertyName, private bool $isProperty)
     {
     }
 
