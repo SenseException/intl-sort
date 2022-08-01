@@ -34,6 +34,11 @@ class Builder
         $this->comparatorFactory = $comparatorFactory ?? new Standard();
     }
 
+    public static function create(string $locale): self
+    {
+        return new self($locale, new Standard());
+    }
+
     public function enableFrenchCollation(): self
     {
         $this->collator->setAttribute(Collator::FRENCH_COLLATION, Collator::ON);

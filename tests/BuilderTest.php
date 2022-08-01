@@ -18,7 +18,7 @@ class BuilderTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->builder = new Builder('fr_FR');
+        $this->builder = Builder::create('fr_FR');
     }
 
     public function testGetSorter(): void
