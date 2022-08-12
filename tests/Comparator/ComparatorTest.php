@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Budgegeria\IntlSort\Tests\Comparator;
 
-use Budgegeria\IntlSort\Collator\ConfigurableCollator;
+use Budgegeria\IntlSort\Collator\Collator as IntlSortCollator;
 use Budgegeria\IntlSort\Comparator\Comparator;
 use Budgegeria\IntlSort\Exception\IntlSortException;
 use Budgegeria\IntlSort\Tests\Collator;
@@ -26,7 +26,7 @@ class ComparatorTest extends TestCase
 
     public function testDelegateToCollator(): void
     {
-        $collator = $this->createMock(ConfigurableCollator::class);
+        $collator = $this->createMock(IntlSortCollator::class);
         $collator->expects(self::once())
             ->method('compare')
             ->with('1', 'a')
@@ -58,7 +58,7 @@ class ComparatorTest extends TestCase
 
     public function testThrowsIntlException(): void
     {
-        $collator = $this->createStub(ConfigurableCollator::class);
+        $collator = $this->createStub(IntlSortCollator::class);
         $collator->method('compare')
             ->willThrowException(new IntlSortException('error'));
 

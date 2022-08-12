@@ -11,7 +11,7 @@ use IntlException;
 use function assert;
 use function is_int;
 
-class ConfigurableCollator implements Collator
+final class ConfigurableCollator implements Collator
 {
     public function __construct(private IntlCollator $collator, private Configuration $config)
     {
