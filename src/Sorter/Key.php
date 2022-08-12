@@ -22,9 +22,7 @@ final class Key implements Sorter
         $comparable = $this->comparable;
         uksort(
             $values,
-            static function (mixed $first, mixed $second) use ($comparable): int {
-                return $comparable->compare($first, $second);
-            }
+            static fn (mixed $first, mixed $second): int => $comparable->compare($first, $second)
         );
 
         return $values;
