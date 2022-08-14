@@ -20,6 +20,9 @@ class Configuration
         $this->nullableSort = $value;
     }
 
+    /**
+     * @phpstan-return self::NULL_VALUES_*|null
+     */
     public function getNullableSort(): ?int
     {
         return $this->nullableSort;
