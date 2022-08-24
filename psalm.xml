@@ -4,7 +4,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns="https://getpsalm.org/schema/config"
     xsi:schemaLocation="https://getpsalm.org/schema/config vendor/vimeo/psalm/config.xsd"
-    errorLevel="2"
+    errorLevel="1"
 >
     <projectFiles>
         <directory name="src"/>
@@ -17,4 +17,19 @@
     <plugins>
         <pluginClass class="Psalm\PhpUnitPlugin\Plugin"/>
     </plugins>
+
+    <issueHandlers>
+        <MixedInferredReturnType>
+            <errorLevel type="suppress">
+                <file name="tests/BuilderTest.php" />
+                <file name="tests/Comparator/ValueObjectTest.php" />
+            </errorLevel>
+        </MixedInferredReturnType>
+
+        <MixedMethodCall>
+            <errorLevel type="suppress">
+                <file name="src/Comparator/ValueObject.php" />
+            </errorLevel>
+        </MixedMethodCall>
+    </issueHandlers>
 </psalm>

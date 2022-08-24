@@ -15,8 +15,8 @@ class ValueObject implements Comparable
     public function compare(mixed $value, mixed $comparativeValue): int
     {
         return $this->collator->compare(
-            $this->callAccessor($value),
-            $this->callAccessor($comparativeValue)
+            $this->callAccessor((object) $value),
+            $this->callAccessor((object) $comparativeValue)
         );
     }
 
