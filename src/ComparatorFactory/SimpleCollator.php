@@ -18,9 +18,7 @@ class SimpleCollator implements Factory
     /** @var class-string<CollatorConstructor> $classname */
     private $classname;
 
-    /**
-     * @psalm-param class-string<CollatorConstructor> $classname
-     */
+    /** @psalm-param class-string<CollatorConstructor> $classname */
     public function __construct(string $classname)
     {
         if (! class_exists($classname)) {

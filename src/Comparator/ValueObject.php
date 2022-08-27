@@ -16,7 +16,7 @@ class ValueObject implements Comparable
     {
         return $this->collator->compare(
             $this->callAccessor((object) $value),
-            $this->callAccessor((object) $comparativeValue)
+            $this->callAccessor((object) $comparativeValue),
         );
     }
 

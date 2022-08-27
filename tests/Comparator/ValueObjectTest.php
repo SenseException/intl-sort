@@ -11,9 +11,7 @@ use Generator;
 use IntlException;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @covers \Budgegeria\IntlSort\Comparator\ValueObject
- */
+/** @covers \Budgegeria\IntlSort\Comparator\ValueObject */
 abstract class ValueObjectTest extends TestCase
 {
     private ValueObject $comparator;
@@ -37,17 +35,13 @@ abstract class ValueObjectTest extends TestCase
         self::assertSame(-1, $this->createComparator($collator)->compare($this->createObject(1), $this->createObject('a')));
     }
 
-    /**
-     * @dataProvider provideObjectsToCompare
-     */
+    /** @dataProvider provideObjectsToCompare */
     public function testCompare(object $object, object $comparativeObject, int $expected): void
     {
         self::assertSame($expected, $this->comparator->compare($object, $comparativeObject));
     }
 
-    /**
-     * @return Generator<array<object|int>>
-     */
+    /** @return Generator<array<object|int>> */
     public function provideObjectsToCompare(): Generator
     {
         yield 'isSameWithLetters' => [$this->createObject('a'), $this->createObject('a'), 0];

@@ -9,8 +9,6 @@ use Budgegeria\IntlSort\Exception\IntlSortException;
 
 interface CollatorConstructor extends Comparable
 {
-    /**
-     * @throws IntlSortException
-     */
+    /** @throws IntlSortException */
     public function __construct(Collator $collator);
 }

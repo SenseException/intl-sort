@@ -27,7 +27,7 @@ class Builder
 
     private Configuration $configuration;
 
-    public function __construct(string $locale, ?Factory $comparatorFactory = null)
+    public function __construct(string $locale, Factory|null $comparatorFactory = null)
     {
         $this->collator          = new Collator($locale);
         $this->configuration     = new Configuration();

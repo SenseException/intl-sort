@@ -11,7 +11,7 @@ use Collator as IntlCollator;
 
 trait Collator
 {
-    private function createCollator(?IntlCollator $collator = null): IntlSortCollator
+    private function createCollator(IntlCollator|null $collator = null): IntlSortCollator
     {
         if ($collator === null) {
             $collator = new IntlCollator('en_US');

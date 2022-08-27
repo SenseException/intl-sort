@@ -17,9 +17,7 @@ final class ConfigurableCollator implements Collator
     {
     }
 
-    /**
-     * @throws IntlSortException
-     */
+    /** @throws IntlSortException */
     public function compare(mixed $value, mixed $comparativeValue): int
     {
         if (($comparativeValue === null || $value === null) && $this->config->getNullableSort() === Configuration::NULL_VALUES_LAST) {

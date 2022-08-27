@@ -8,8 +8,6 @@ use Budgegeria\IntlSort\Exception\IntlSortException;
 
 interface Comparable
 {
-    /**
-     * @throws IntlSortException
-     */
+    /** @throws IntlSortException */
     public function compare(mixed $value, mixed $comparativeValue): int;
 }

@@ -10,9 +10,7 @@ use Budgegeria\IntlSort\Exception\IntlSortException;
 use Budgegeria\IntlSort\Tests\Collator;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @covers \Budgegeria\IntlSort\Comparator\Comparator
- */
+/** @covers \Budgegeria\IntlSort\Comparator\Comparator */
 class ComparatorTest extends TestCase
 {
     use Collator;

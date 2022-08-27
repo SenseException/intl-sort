@@ -108,9 +108,7 @@ class BuilderTest extends TestCase
         self::assertSame($values, $result);
     }
 
-    /**
-     * @return Generator<array<int, array<int, string>>>
-     */
+    /** @return Generator<array<int, array<int, string>>> */
     public function provideDisabledCaseLevelValues(): Generator
     {
         yield [['b', 'B', 'c']];
@@ -132,9 +130,7 @@ class BuilderTest extends TestCase
         self::assertSame($values, $result);
     }
 
-    /**
-     * @return Generator<array<int, array<int, string>>>
-     */
+    /** @return Generator<array<int, array<int, string>>> */
     public function providePrimaryStrengthValues(): Generator
     {
         yield [['côté', 'Côte', 'côte', 'd']];
@@ -156,9 +152,7 @@ class BuilderTest extends TestCase
         self::assertSame($values, $result);
     }
 
-    /**
-     * @return Generator<array<int, array<int, string>>>
-     */
+    /** @return Generator<array<int, array<int, string>>> */
     public function provideSecondaryStrengthValues(): Generator
     {
         yield [['côte', 'Côte', 'côté', 'd']];
@@ -181,9 +175,7 @@ class BuilderTest extends TestCase
         self::assertSame($values, $result);
     }
 
-    /**
-     * @return Generator<array<int, array<int, string>>>
-     */
+    /** @return Generator<array<int, array<int, string>>> */
     public function provideTertiaryStrengthValues(): Generator
     {
         yield [['côte', 'Côte', 'côté']];
@@ -208,9 +200,7 @@ class BuilderTest extends TestCase
         self::assertSame($expected, $result);
     }
 
-    /**
-     * @return Generator<array<int, array<int, string>>>
-     */
+    /** @return Generator<array<int, array<int, string>>> */
     public function provideQuarternaryStrengthValues(): Generator
     {
         yield [
