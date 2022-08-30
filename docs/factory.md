@@ -14,7 +14,7 @@ into the builder's second constructor argument. It will handle simple scalar val
 like integers and strings. When you use
 
 ```php
-$sortBuilder = new \Budgegeria\IntlSort\Builder('de_DE');
+$sortBuilder = \Budgegeria\IntlSort\Builder::create('de_DE');
 ````
 
 it is the same as if you're injecting the factory of the basic comparator like this:
