@@ -15,6 +15,9 @@ class ClosureAccess implements Comparable
 
     public function compare(mixed $value, mixed $comparativeValue): int
     {
-        return 0;
+        return $this->collator->compare(
+            ($this->func)($value),
+            ($this->func)($comparativeValue),
+        );
     }
 }
