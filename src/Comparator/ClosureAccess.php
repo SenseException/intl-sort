@@ -9,6 +9,7 @@ use Closure;
 
 class ClosureAccess implements Comparable
 {
+    /** @psalm-param Closure(mixed):string $func */
     public function __construct(private Collator $collator, private Closure $func)
     {
     }

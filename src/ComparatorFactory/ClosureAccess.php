@@ -11,6 +11,7 @@ use Closure;
 
 class ClosureAccess implements Factory
 {
+    /** @psalm-param Closure(mixed):string $func */
     public function __construct(private Closure $func)
     {
     }
