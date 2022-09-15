@@ -22,3 +22,10 @@ instance you have to use one of the following named constructors:
 `Budgegeria\IntlSort\ComparatorFactory\ValueObject::createForMethodCall($methodName)` for methods
 `Budgegeria\IntlSort\ComparatorFactory\ValueObject::createForPropertyCall($propertyName)` for
 properties.
+
+## New comparator and factory: ClosureAccess
+
+ClosureAccess allows to use a `Closure` for accessing values to sort:
+
+`Budgegeria\IntlSort\Comparator\ClosureAccess`
+`Budgegeria\IntlSort\ComparatorFactory\ClosureAccess`
