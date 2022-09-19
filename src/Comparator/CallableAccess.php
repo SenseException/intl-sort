@@ -7,11 +7,15 @@ namespace Budgegeria\IntlSort\Comparator;
 use Budgegeria\IntlSort\Collator\Collator;
 use Closure;
 
-class ClosureAccess implements Comparable
+class CallableAccess implements Comparable
 {
-    /** @psalm-param Closure(mixed):string $func */
-    public function __construct(private Collator $collator, private Closure $func)
+    /** @psalm-var Closure(mixed):string */
+    private Closure $func;
+
+    /** @psalm-param callable(mixed):string $func */
+    public function __construct(private Collator $collator, callable $func)
     {
+        $this->func = Closure::fromCallable($func);
     }
 
     public function compare(mixed $value, mixed $comparativeValue): int

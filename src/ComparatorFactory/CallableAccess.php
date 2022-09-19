@@ -5,15 +5,19 @@ declare(strict_types=1);
 namespace Budgegeria\IntlSort\ComparatorFactory;
 
 use Budgegeria\IntlSort\Collator\Collator;
-use Budgegeria\IntlSort\Comparator\ClosureAccess as Comparator;
+use Budgegeria\IntlSort\Comparator\CallableAccess as Comparator;
 use Budgegeria\IntlSort\Comparator\Comparable;
 use Closure;
 
-class ClosureAccess implements Factory
+class CallableAccess implements Factory
 {
-    /** @psalm-param Closure(mixed):string $func */
-    public function __construct(private Closure $func)
+    /** @psalm-var Closure(mixed):string */
+    private Closure $func;
+
+    /** @psalm-param callable(mixed):string $func */
+    public function __construct(callable $func)
     {
+        $this->func = Closure::fromCallable($func);
     }
 
     public function create(Collator $collator): Comparable

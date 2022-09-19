@@ -5,11 +5,11 @@ declare(strict_types=1);
 namespace Budgegeria\IntlSort\Tests\Comparator;
 
 use Budgegeria\IntlSort\Collator\Collator;
-use Budgegeria\IntlSort\Comparator\ClosureAccess;
+use Budgegeria\IntlSort\Comparator\CallableAccess;
 use PHPUnit\Framework\TestCase;
 
-/** @covers \Budgegeria\IntlSort\Comparator\ClosureAccess */
-class ClosureAccessTest extends TestCase
+/** @covers \Budgegeria\IntlSort\Comparator\CallableAccess */
+class CallableAccessTest extends TestCase
 {
     public function testDelegateToCollator(): void
     {
@@ -20,7 +20,7 @@ class ClosureAccessTest extends TestCase
             ->with('1', '2')
             ->willReturn(-1);
 
-        $comparator = new ClosureAccess($collator, $func);
+        $comparator = new CallableAccess($collator, $func);
 
         self::assertSame(-1, $comparator->compare(['foo' => '1'], ['foo' => '2']));
     }
