@@ -23,9 +23,9 @@ instance you have to use one of the following named constructors:
 `Budgegeria\IntlSort\ComparatorFactory\ValueObject::createForPropertyCall($propertyName)` for
 properties.
 
-## New comparator and factory: ClosureAccess
+## New comparator and factory: CallableAccess
 
-ClosureAccess allows to use a `Closure` for accessing values to sort:
+CallableAccess allows to use callables for accessing values to sort:
 
-`Budgegeria\IntlSort\Comparator\ClosureAccess`
-`Budgegeria\IntlSort\ComparatorFactory\ClosureAccess`
+`Budgegeria\IntlSort\Comparator\CallableAccess`
+`Budgegeria\IntlSort\ComparatorFactory\CallableAccess`
