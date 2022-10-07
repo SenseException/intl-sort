@@ -23,6 +23,36 @@ it is the same as if you're injecting the factory of the basic comparator like t
 $sortBuilder = new \Budgegeria\IntlSort\Builder('de_DE', new \Budgegeria\IntlSort\ComparatorFactory\Standard());
 ```
 
+### CallableAccess Comparator
+
+`CallableAccess` allows you to access the values with a
+[callable](https://www.php.net/manual/de/language.types.callable.php) that is provided by you in the constructor
+of the factory.
+
+#### Functions
+
+```php
+$factory = new \Budgegeria\IntlSort\ComparatorFactory\CallableAccess('strtolower');
+// or
+$factory = new \Budgegeria\IntlSort\ComparatorFactory\CallableAccess(fn (mixed $value) => strtolower($value));
+$sortBuilder = new \Budgegeria\IntlSort\Builder('de_DE', $factory);
+```
+
+#### Classes
+
+```php
+class Foo
+{
+    public function __invoke(mixed $value)
+    {
+        return 'prefix' . $value;
+    }
+}
+
+$factory = new \Budgegeria\IntlSort\ComparatorFactory\CallableAccess(new Foo());
+$sortBuilder = new \Budgegeria\IntlSort\Builder('de_DE', $factory);
+```
+
 ### ValueObject Comparator
 
 `ValueObject` is your choice if the elements you're going to sort are objects from the same type. You can compare
@@ -30,7 +60,7 @@ integer or string values of the same accessor (class method or property) that wi
 objects based on the builder's configuration.
 
 ```php
-$factory = new \Budgegeria\IntlSort\ComparatorFactory\ValueObject::createForMethodCall('methodName');
+$factory = \Budgegeria\IntlSort\ComparatorFactory\ValueObject::createForMethodCall('methodName');
 $sortBuilder = new \Budgegeria\IntlSort\Builder('de_DE', $factory);
 ```
 
@@ -53,7 +83,7 @@ you can sort all elements of `Foo` by the method name `Foo::bar()` when you inst
 name:
 
 ```php
-$factory = new \Budgegeria\IntlSort\ComparatorFactory\ValueObject::createForMethodCall('bar');
+$factory = \Budgegeria\IntlSort\ComparatorFactory\ValueObject::createForMethodCall('bar');
 ```
 
 Sorting by a method's return value only works if that method doesn't require an argument.
@@ -73,7 +103,7 @@ you can sort all elements of `Foo` by the property name `Foo::$bar` when you ins
 name:
 
 ```php
-$factory = new \Budgegeria\IntlSort\ComparatorFactory\ValueObject::createForPropertyCall('bar');
+$factory = \Budgegeria\IntlSort\ComparatorFactory\ValueObject::createForPropertyCall('bar');
 ```
 
 The second argument is being used to mark the name in argument one as a property name. Using `false` will make the
