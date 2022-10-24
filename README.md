@@ -1,9 +1,9 @@
 # intl-sort
 
-A wrapper library for PHP Intl to sort values based on rules of locales.
+A wrapper library for PHP Intl to sort values/objects based on rules of locales.
 
-This library wraps the Collator class of the PHP Intl extension and offers a more fluid API for
-you to sort your data country/locale specific.
+This library wraps the Collator class of the PHP Intl extension and offers a more fluid API without constant juggling
+for you to sort your values or objects by country/locale specific standards.
 
 [![Latest Stable Version](https://poser.pugx.org/senseexception/intl-sort/v/stable)](https://packagist.org/packages/senseexception/intl-sort)
 [![PHP from Packagist](https://img.shields.io/packagist/php-v/senseexception/intl-sort.svg)](https://packagist.org/packages/senseexception/intl-sort)
@@ -20,8 +20,8 @@ but they don't return useful results when a country or language specific order o
 needed like e.g. words with umlauts or other accents.
 
 This library wraps the `Collator` class of the PHP Intl extension and offers a builder pattern
-API to create a `Sorter` to sort internationalized values by the rules of a locale. You also can
-implement your own sorting logic to be able to e.g. sort your custom value objects.
+API to create a `Sorter` to sort values or value objects by the rules of a locale. You also can
+implement your own sorting logic.
 
 ## Installation
 
