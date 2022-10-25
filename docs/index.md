@@ -1,8 +1,8 @@
 ## Intl-Sort - A PHP sorting library that handles internationalized data
 
 This library wraps the `Collator` class of the PHP Intl extension and offers a builder pattern
-API to create a `Sorter` to sort internationalized values according to local conventions. You can also
-implement your own sorting logic to be able to e.g. sort your custom value objects.
+API to create a `Sorter` to sort internationalized values or objects according to local conventions. You can also
+implement your own sorting logic.
 
 ### Basic usage
 
@@ -88,9 +88,8 @@ is greater it will return `1` and `0` if they are equal.
 ### Create custom sorting for non string / integer elements
 
 Behind the scenes of intl-sort is the `Comparator`, which is the core part handling the sorting of elements inside
-the `Sorter`-instances. It was created to order string or integer values by local conventions, but isn't able to handle
-e.g. value objects or other types containing useful string/integer values. Luckily intl-sort allows you to create and
-use your own `Comparator` to work with your project's data, in case no one of the 
-[provided comparators and factories](factory.md) fit to your needs.
+the `Sorter`-instances. It was created to order string or integer values by local conventions.
+Luckily intl-sort allows you to create and  use your own `Comparator` to work with your project's data, in case
+no one of the [provided comparators and factories](factory.md) fit to your needs.
 
 [Read more about how to create and use a custom `Comparator`](custom-comparator.md).
