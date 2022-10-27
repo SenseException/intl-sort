@@ -53,6 +53,8 @@ $factory = new \Budgegeria\IntlSort\ComparatorFactory\CallableAccess(new Foo());
 $sortBuilder = new \Budgegeria\IntlSort\Builder('de_DE', $factory);
 ```
 
+You can use the `CallableAccess` to handle value objects inside the callable function too.
+
 ### ValueObject Comparator
 
 `ValueObject` is your choice if the elements you're going to sort are objects from the same type. You can compare
