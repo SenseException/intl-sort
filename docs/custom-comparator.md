@@ -6,6 +6,10 @@ Collator is injected into the `Comparator` where you can decide which part of va
 should be compared. If the default `Comparator` or one of the [other provided comparators and factories](factory.md)
 don't fit to your needs, you can create your own one.
 
+| Info                                                                                                             |
+|------------------------------------------------------------------------------------------------------------------|
+| intl-sort already supports sorting objects, This example is just for showing how to create a custom `Comparator` |
+
 Let's use code examples and explain how you can implement a `Comparator` that e.g. can sort an
 array of objects of the same type. We assume your objects are instances of a class named
 `Product`:
