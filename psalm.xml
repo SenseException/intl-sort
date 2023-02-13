@@ -5,6 +5,8 @@
     xmlns="https://getpsalm.org/schema/config"
     xsi:schemaLocation="https://getpsalm.org/schema/config vendor/vimeo/psalm/config.xsd"
     errorLevel="1"
+    findUnusedBaselineEntry="true"
+    findUnusedCode="true"
 >
     <projectFiles>
         <directory name="src"/>
@@ -31,5 +33,11 @@
                 <file name="src/Comparator/ValueObject.php" />
             </errorLevel>
         </MixedMethodCall>
+
+        <PossiblyUnusedMethod>
+            <errorLevel type="suppress">
+                <file name="src/Comparator/CollatorConstructor.php" />
+            </errorLevel>
+        </PossiblyUnusedMethod>
     </issueHandlers>
 </psalm>
