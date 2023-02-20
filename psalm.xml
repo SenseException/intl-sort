@@ -23,7 +23,6 @@
     <issueHandlers>
         <MixedInferredReturnType>
             <errorLevel type="suppress">
-                <file name="tests/BuilderTest.php" />
                 <file name="tests/Comparator/ValueObjectTest.php" />
             </errorLevel>
         </MixedInferredReturnType>

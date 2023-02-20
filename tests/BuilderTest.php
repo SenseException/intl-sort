@@ -9,7 +9,6 @@ use Budgegeria\IntlSort\Collator\Collator;
 use Budgegeria\IntlSort\Comparator\Comparable;
 use Budgegeria\IntlSort\ComparatorFactory\Factory;
 use Budgegeria\IntlSort\Sorter\Sorter;
-use Generator;
 use PHPUnit\Framework\TestCase;
 
 class BuilderTest extends TestCase
@@ -108,8 +107,8 @@ class BuilderTest extends TestCase
         self::assertSame($values, $result);
     }
 
-    /** @return Generator<array<int, array<int, string>>> */
-    public function provideDisabledCaseLevelValues(): Generator
+    /** @return iterable<int, array<int, array<int, string>>> */
+    public function provideDisabledCaseLevelValues(): iterable
     {
         yield [['b', 'B', 'c']];
         yield [['B', 'b', 'c']];
@@ -130,8 +129,8 @@ class BuilderTest extends TestCase
         self::assertSame($values, $result);
     }
 
-    /** @return Generator<array<int, array<int, string>>> */
-    public function providePrimaryStrengthValues(): Generator
+    /** @return iterable<int, array<int, array<int, string>>> */
+    public function providePrimaryStrengthValues(): iterable
     {
         yield [['côté', 'Côte', 'côte', 'd']];
         yield [['côte', 'côté', 'Côte', 'd']];
@@ -152,8 +151,8 @@ class BuilderTest extends TestCase
         self::assertSame($values, $result);
     }
 
-    /** @return Generator<array<int, array<int, string>>> */
-    public function provideSecondaryStrengthValues(): Generator
+    /** @return iterable<int, array<int, array<int, string>>> */
+    public function provideSecondaryStrengthValues(): iterable
     {
         yield [['côte', 'Côte', 'côté', 'd']];
         yield [['Role', 'role', 'rôle']];
@@ -175,8 +174,8 @@ class BuilderTest extends TestCase
         self::assertSame($values, $result);
     }
 
-    /** @return Generator<array<int, array<int, string>>> */
-    public function provideTertiaryStrengthValues(): Generator
+    /** @return iterable<int, array<int, array<int, string>>> */
+    public function provideTertiaryStrengthValues(): iterable
     {
         yield [['côte', 'Côte', 'côté']];
         yield [['role', 'Role', 'rôle']];
@@ -200,8 +199,8 @@ class BuilderTest extends TestCase
         self::assertSame($expected, $result);
     }
 
-    /** @return Generator<array<int, array<int, string>>> */
-    public function provideQuarternaryStrengthValues(): Generator
+    /** @return iterable<int, array<int, array<int, string>>> */
+    public function provideQuarternaryStrengthValues(): iterable
     {
         yield [
             [
