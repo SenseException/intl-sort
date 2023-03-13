@@ -6,6 +6,7 @@ namespace Budgegeria\IntlSort\Comparator;
 
 use Budgegeria\IntlSort\Collator\Collator;
 
+/** @deprecated This class is deprecated and will be removed in 3.0. Please use Budgegeria\IntlSort\Comparator\CallableAccess instead */
 class ValueObject implements Comparable
 {
     public function __construct(private Collator $collator, private string $methodOrPropertyName, private bool $isProperty)

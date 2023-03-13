@@ -8,6 +8,7 @@ use Budgegeria\IntlSort\Collator\Collator;
 use Budgegeria\IntlSort\Comparator\Comparable;
 use Budgegeria\IntlSort\Comparator\ValueObject as Comparator;
 
+/** @deprecated This class is deprecated and will be removed in 3.0. Please use Budgegeria\IntlSort\ComparatorFactory\CallableAccess instead */
 class ValueObject implements Factory
 {
     public function __construct(private string $methodOrPropertyName, private bool $isProperty)

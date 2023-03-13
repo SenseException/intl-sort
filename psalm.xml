@@ -38,5 +38,15 @@
                 <file name="src/Comparator/CollatorConstructor.php" />
             </errorLevel>
         </PossiblyUnusedMethod>
+
+        <DeprecatedClass>
+            <errorLevel type="suppress">
+                <file name="tests/Comparator/ValueObjectTest.php" />
+                <file name="tests/ComparatorFactory/ValueObjectTest.php" />
+                <file name="tests/Comparator/ValueObjectWithPropertyTest.php" />
+                <file name="tests/Comparator/ValueObjectWithMethodTest.php" />
+                <file name="src/ComparatorFactory/ValueObject.php" />
+            </errorLevel>
+        </DeprecatedClass>
     </issueHandlers>
 </psalm>
