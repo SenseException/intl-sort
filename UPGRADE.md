@@ -1,3 +1,10 @@
+# Upgrade to 2.1
+
+## The following classes are deprecated and will be removed in 3.0
+
+* `Budgegeria\IntlSort\Comparator\ValueObject` (use `Budgegeria\IntlSort\Comparator\CallableAccess`)
+* `Budgegeria\IntlSort\ComparatorFactory\ValueObject` (use `Budgegeria\IntlSort\ComparatorFactory\CallableAccess`)
+
 # Upgrade to 2.0
 
 ## Set minimum PHP requirement to 8.0
@@ -20,10 +27,3 @@ CallableAccess allows to use callables for accessing values to sort:
 
 `Budgegeria\IntlSort\Comparator\CallableAccess`
 `Budgegeria\IntlSort\ComparatorFactory\CallableAccess`
-
-# Upgrade to 2.1
-
-## The following classes are deprecated and will be removed in 3.0
-
-* `Budgegeria\IntlSort\Comparator\ValueObject` (use `Budgegeria\IntlSort\Comparator\CallableAccess`)
-* `Budgegeria\IntlSort\ComparatorFactory\ValueObject` (use `Budgegeria\IntlSort\ComparatorFactory\CallableAccess`)
