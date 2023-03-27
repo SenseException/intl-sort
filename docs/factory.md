@@ -57,6 +57,8 @@ You can use the `CallableAccess` to handle value objects inside the callable fun
 
 ### ValueObject Comparator
 
+> The ValueObject Comparator and Factory are deprecated and will be removed in 3.0
+
 `ValueObject` is your choice if the elements you're going to sort are objects from the same type. You can compare
 integer or string values of the same accessor (class method or property) that will be used for sorting all the
 objects based on the builder's configuration.
