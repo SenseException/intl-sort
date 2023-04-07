@@ -46,7 +46,16 @@
                 <file name="tests/Comparator/ValueObjectWithPropertyTest.php" />
                 <file name="tests/Comparator/ValueObjectWithMethodTest.php" />
                 <file name="src/ComparatorFactory/ValueObject.php" />
+                <file name="src/ComparatorFactory/SimpleCollator.php" />
+                <file name="tests/ComparatorFactory/SimpleCollatorTest.php" />
             </errorLevel>
         </DeprecatedClass>
+
+        <DeprecatedInterface>
+            <errorLevel type="suppress">
+                <file name="src/ComparatorFactory/SimpleCollator.php" />
+                <file name="tests/ComparatorFactory/Fixtures/Foo.php" />
+            </errorLevel>
+        </DeprecatedInterface>
     </issueHandlers>
 </psalm>

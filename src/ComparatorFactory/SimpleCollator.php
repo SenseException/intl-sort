@@ -13,6 +13,7 @@ use function class_exists;
 use function class_implements;
 use function in_array;
 
+/** @deprecated This class is deprecated and will be removed in 3.0. Please use Budgegeria\IntlSort\Comparator\CallableAccess instead */
 class SimpleCollator implements Factory
 {
     /** @var class-string<CollatorConstructor> $classname */

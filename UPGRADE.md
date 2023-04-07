@@ -4,6 +4,11 @@
 
 * `Budgegeria\IntlSort\Comparator\ValueObject` (use `Budgegeria\IntlSort\Comparator\CallableAccess`)
 * `Budgegeria\IntlSort\ComparatorFactory\ValueObject` (use `Budgegeria\IntlSort\ComparatorFactory\CallableAccess`)
+* `Budgegeria\IntlSort\ComparatorFactory\SimpleCollator` (use `Budgegeria\IntlSort\ComparatorFactory\CallableAccess`)
+
+## The following interface is deprecated and will be removed in 3.0
+
+* `\Budgegeria\IntlSort\Comparator\CollatorConstructor`
 
 # Upgrade to 2.0
 
