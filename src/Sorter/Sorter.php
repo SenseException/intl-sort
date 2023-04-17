@@ -9,9 +9,9 @@ use Budgegeria\IntlSort\Exception\IntlSortException;
 interface Sorter
 {
     /**
-     * @param array<int|string|null> $values
+     * @param array<int|string, int|string|null> $values
      *
-     * @return array<int|string|null>
+     * @return array<int|string, int|string|null>
      *
      * @throws IntlSortException
      */
