@@ -57,5 +57,12 @@
                 <file name="tests/ComparatorFactory/Fixtures/Foo.php" />
             </errorLevel>
         </DeprecatedInterface>
+
+        <DeprecatedMethod>
+            <errorLevel type="suppress">
+                <file name="src/Exception/IntlSortException.php" />
+                <file name="src/ComparatorFactory/SimpleCollator.php" />
+            </errorLevel>
+        </DeprecatedMethod>
     </issueHandlers>
 </psalm>
