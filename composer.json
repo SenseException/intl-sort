@@ -1,7 +1,7 @@
 {
   "name": "senseexception/intl-sort",
   "description": "A wrapper library for PHP Intl to sort values based on rules of locales",
-  "minimum-stability": "dev",
+  "minimum-stability": "stable",
   "type": "library",
   "license": "MIT",
   "keywords": ["intl", "i18n", "sort", "icu", "sorter", "internationalization", "order", "Collator"],
