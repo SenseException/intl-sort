@@ -8,7 +8,7 @@
 
 ## The following interface is deprecated and will be removed in 3.0
 
-* `\Budgegeria\IntlSort\Comparator\CollatorConstructor`
+* `Budgegeria\IntlSort\Comparator\CollatorConstructor`
 
 # Upgrade to 2.0
 
