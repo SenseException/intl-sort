@@ -18,9 +18,23 @@ class Configuration
         $this->nullableSort = $value;
     }
 
-    /** @phpstan-return self::NULL_VALUES_*|null */
+    /**
+     * @deprecated This method will be removed in 3.0 without replacement
+     *
+     * @phpstan-return self::NULL_VALUES_*|null
+     */
     public function getNullableSort(): int|null
     {
         return $this->nullableSort;
+    }
+
+    public function isNullValueFirst(): bool
+    {
+        return $this->nullableSort === self::NULL_VALUES_FIRST;
+    }
+
+    public function isNullValueLast(): bool
+    {
+        return $this->nullableSort === self::NULL_VALUES_LAST;
     }
 }

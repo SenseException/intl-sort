@@ -36,6 +36,7 @@
         <PossiblyUnusedMethod>
             <errorLevel type="suppress">
                 <file name="src/Comparator/CollatorConstructor.php" />
+                <file name="src/Collator/Configuration.php" />
             </errorLevel>
         </PossiblyUnusedMethod>
 
@@ -62,6 +63,7 @@
             <errorLevel type="suppress">
                 <file name="src/Exception/IntlSortException.php" />
                 <file name="src/ComparatorFactory/SimpleCollator.php" />
+                <file name="src/Collator/Configuration.php" />
             </errorLevel>
         </DeprecatedMethod>
     </issueHandlers>
