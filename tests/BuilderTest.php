@@ -55,6 +55,29 @@ class BuilderTest extends TestCase
         self::assertSame(0, $this->builder->getComparator()->compare('a', 'a'));
     }
 
+    public function testOmitKeysOnSortedValues(): void
+    {
+        $expected = [1, 2, 3];
+        $builder  = new Builder('de_DE');
+        $result   = $builder->omitKeys()
+            ->getSorter()
+            ->sort([3, 1, 2]);
+
+        self::assertSame($expected, $result);
+    }
+
+    public function testKeepKeysOnSortedValues(): void
+    {
+        $expected = [1 => 1, 2 => 2, 0 => 3];
+        $builder  = new Builder('de_DE');
+        $result   = $builder->omitKeys()
+            ->keepKeys()
+            ->getSorter()
+            ->sort([3, 1, 2]);
+
+        self::assertSame($expected, $result);
+    }
+
     public function testEnableNormalizationMode(): void
     {
         $expected = [0 => 'ạ̈', 1 => 'ạ̈'];

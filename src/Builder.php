@@ -12,6 +12,7 @@ use Budgegeria\IntlSort\ComparatorFactory\Standard;
 use Budgegeria\IntlSort\Sorter\Asc;
 use Budgegeria\IntlSort\Sorter\Desc;
 use Budgegeria\IntlSort\Sorter\Key;
+use Budgegeria\IntlSort\Sorter\Omit;
 use Budgegeria\IntlSort\Sorter\Sorter;
 use Collator;
 
@@ -24,6 +25,8 @@ class Builder
     private bool $isKeySort = false;
 
     private Factory $comparatorFactory;
+
+    private bool $keepKeys = true;
 
     private Configuration $configuration;
 
@@ -227,6 +230,20 @@ class Builder
         return $this;
     }
 
+    public function keepKeys(): self
+    {
+        $this->keepKeys = true;
+
+        return $this;
+    }
+
+    public function omitKeys(): self
+    {
+        $this->keepKeys = false;
+
+        return $this;
+    }
+
     public function getSorter(): Sorter
     {
         $comparator = $this->getComparator();
@@ -237,7 +254,11 @@ class Builder
         }
 
         if (! $this->isAsc) {
-            return new Desc($sorter);
+            $sorter = new Desc($sorter);
+        }
+
+        if (! $this->keepKeys) {
+            return new Omit($sorter);
         }
 
         return $sorter;
