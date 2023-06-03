@@ -87,6 +87,11 @@ Configures the sort order and which part of the elements are the focus for the s
 * **orderByKeys()** - order by keys of the elements.
 * **orderByValues()** - order by the values of the elements
 
+### Omit array keys
+
+* **omitKeys()** - array keys of the sorted value won't be kept and replaced with the keys of a list.
+* **keepKeys()** - keep original array keys after sort.
+
 ### Null value position
 
 Positioning of null values at the start or at the end of all elements.
