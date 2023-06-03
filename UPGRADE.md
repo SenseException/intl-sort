@@ -1,5 +1,10 @@
 # Upgrade to 2.1
 
+## New Builder config: Omitting array keys on sorted values
+
+* The methods `Builder::keepKeys()` and `Builder::omitKeys()` were added.
+* New sorter class `Omit` added.
+
 ## The following classes are deprecated and will be removed in 3.0
 
 * `Budgegeria\IntlSort\Comparator\ValueObject` (use `Budgegeria\IntlSort\Comparator\CallableAccess`)
