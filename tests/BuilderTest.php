@@ -131,7 +131,7 @@ class BuilderTest extends TestCase
     }
 
     /** @return iterable<int, array<int, array<int, string>>> */
-    public function provideDisabledCaseLevelValues(): iterable
+    public static function provideDisabledCaseLevelValues(): iterable
     {
         yield [['b', 'B', 'c']];
         yield [['B', 'b', 'c']];
@@ -153,7 +153,7 @@ class BuilderTest extends TestCase
     }
 
     /** @return iterable<int, array<int, array<int, string>>> */
-    public function providePrimaryStrengthValues(): iterable
+    public static function providePrimaryStrengthValues(): iterable
     {
         yield [['côté', 'Côte', 'côte', 'd']];
         yield [['côte', 'côté', 'Côte', 'd']];
@@ -175,7 +175,7 @@ class BuilderTest extends TestCase
     }
 
     /** @return iterable<int, array<int, array<int, string>>> */
-    public function provideSecondaryStrengthValues(): iterable
+    public static function provideSecondaryStrengthValues(): iterable
     {
         yield [['côte', 'Côte', 'côté', 'd']];
         yield [['Role', 'role', 'rôle']];
@@ -198,7 +198,7 @@ class BuilderTest extends TestCase
     }
 
     /** @return iterable<int, array<int, array<int, string>>> */
-    public function provideTertiaryStrengthValues(): iterable
+    public static function provideTertiaryStrengthValues(): iterable
     {
         yield [['côte', 'Côte', 'côté']];
         yield [['role', 'Role', 'rôle']];
@@ -223,7 +223,7 @@ class BuilderTest extends TestCase
     }
 
     /** @return iterable<int, array<int, array<int, string>>> */
-    public function provideQuarternaryStrengthValues(): iterable
+    public static function provideQuarternaryStrengthValues(): iterable
     {
         yield [
             [
