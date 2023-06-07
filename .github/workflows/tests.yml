@@ -12,15 +12,15 @@ jobs:
     strategy:
       matrix:
         include:
-         - php-versions: "8.0"
-           continue-on-error: false
          - php-versions: "8.1"
            continue-on-error: false
          - php-versions: "8.2"
+           continue-on-error: false
+         - php-versions: "8.3"
            continue-on-error: true
 
     steps:
-    - uses: "actions/checkout@v2"
+    - uses: "actions/checkout@v3"
 
     - name: "Cache Composer packages"
       id: "composer-cache"
@@ -38,11 +38,11 @@ jobs:
         extensions: "intl, xdebug"
 
     - name: "Install dependencies"
-      if: steps.composer-cache.outputs.cache-hit != 'true' && matrix.php-versions != '8.2'
+      if: steps.composer-cache.outputs.cache-hit != 'true' && matrix.php-versions != '8.3'
       run: "composer install --prefer-dist --no-progress"
 
     - name: "Install dependencies"
-      if: steps.composer-cache.outputs.cache-hit != 'true' && matrix.php-versions == '8.2'
+      if: steps.composer-cache.outputs.cache-hit != 'true' && matrix.php-versions == '8.3'
       run: "composer install --prefer-dist --no-progress --ignore-platform-reqs"
 
     - name: "Unit + Integration"
