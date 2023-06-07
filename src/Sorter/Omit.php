@@ -8,7 +8,7 @@ use function array_values;
 
 final class Omit implements Sorter
 {
-    public function __construct(private Sorter $sorter)
+    public function __construct(private readonly Sorter $sorter)
     {
     }
 

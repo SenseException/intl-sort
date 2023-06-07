@@ -13,7 +13,7 @@ use function is_int;
 
 final class ConfigurableCollator implements Collator
 {
-    public function __construct(private IntlCollator $collator, private Configuration $config)
+    public function __construct(private readonly IntlCollator $collator, private readonly Configuration $config)
     {
     }
 

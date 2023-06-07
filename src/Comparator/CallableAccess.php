@@ -10,10 +10,10 @@ use Closure;
 class CallableAccess implements Comparable
 {
     /** @psalm-var Closure(mixed):string */
-    private Closure $func;
+    private readonly Closure $func;
 
     /** @psalm-param callable(mixed):string $func */
-    public function __construct(private Collator $collator, callable $func)
+    public function __construct(private readonly Collator $collator, callable $func)
     {
         $this->func = Closure::fromCallable($func);
     }

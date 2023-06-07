@@ -18,17 +18,17 @@ use Collator;
 
 class Builder
 {
-    private Collator $collator;
+    private readonly Collator $collator;
 
     private bool $isAsc = true;
 
     private bool $isKeySort = false;
 
-    private Factory $comparatorFactory;
+    private readonly Factory $comparatorFactory;
 
     private bool $keepKeys = true;
 
-    private Configuration $configuration;
+    private readonly Configuration $configuration;
 
     public function __construct(string $locale, Factory|null $comparatorFactory = null)
     {

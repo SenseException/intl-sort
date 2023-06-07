@@ -8,7 +8,7 @@ use Budgegeria\IntlSort\Collator\Collator;
 
 class Comparator implements Comparable
 {
-    public function __construct(private Collator $collator)
+    public function __construct(private readonly Collator $collator)
     {
     }
 

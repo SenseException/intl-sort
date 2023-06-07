@@ -12,7 +12,7 @@ use Closure;
 class CallableAccess implements Factory
 {
     /** @psalm-var Closure(mixed):string */
-    private Closure $func;
+    private readonly Closure $func;
 
     /** @psalm-param callable(mixed):string $func */
     public function __construct(callable $func)

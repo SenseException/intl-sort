@@ -8,7 +8,7 @@ use function array_reverse;
 
 final class Desc implements Sorter
 {
-    public function __construct(private Sorter $sorter)
+    public function __construct(private readonly Sorter $sorter)
     {
     }
 

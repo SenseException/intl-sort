@@ -10,7 +10,7 @@ use function uasort;
 
 final class Asc implements Sorter
 {
-    public function __construct(private Comparable $comparable)
+    public function __construct(private readonly Comparable $comparable)
     {
     }
 
