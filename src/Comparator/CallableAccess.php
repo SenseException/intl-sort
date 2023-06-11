@@ -15,7 +15,7 @@ class CallableAccess implements Comparable
     /** @psalm-param callable(mixed):string $func */
     public function __construct(private readonly Collator $collator, callable $func)
     {
-        $this->func = Closure::fromCallable($func);
+        $this->func = $func(...);
     }
 
     public function compare(mixed $value, mixed $comparativeValue): int

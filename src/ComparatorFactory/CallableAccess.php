@@ -17,7 +17,7 @@ class CallableAccess implements Factory
     /** @psalm-param callable(mixed):string $func */
     public function __construct(callable $func)
     {
-        $this->func = Closure::fromCallable($func);
+        $this->func = $func(...);
     }
 
     public function create(Collator $collator): Comparable
