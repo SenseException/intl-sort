@@ -20,12 +20,19 @@ final class ConfigurableCollator implements Collator
     /** @throws IntlSortException */
     public function compare(mixed $value, mixed $comparativeValue): int
     {
-        if (($comparativeValue === null || $value === null) && $this->config->isNullValueLast()) {
-            return $comparativeValue <=> $value;
-        }
+        $nullFirstArg1 = $value === null && $comparativeValue !== null && $this->config->isNullValueFirst();
+        $nullFirstArg2 = $value !== null && $comparativeValue === null && $this->config->isNullValueFirst();
+        $nullLastArg1  = $value === null && $comparativeValue !== null && $this->config->isNullValueLast();
+        $nullLastArg2  = $value !== null && $comparativeValue === null && $this->config->isNullValueLast();
 
-        if (($comparativeValue === null || $value === null) && $this->config->isNullValueFirst()) {
-            return Configuration::NULL_VALUES_FIRST;
+        $nullableMatch = match (true) {
+            $nullFirstArg1, $nullLastArg2 => -1,
+            $nullLastArg1, $nullFirstArg2 => 1,
+            default => null,
+        };
+
+        if ($nullableMatch !== null) {
+            return $nullableMatch;
         }
 
         try {

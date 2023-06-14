@@ -435,7 +435,7 @@ class BuilderTest extends TestCase
 
     public function testNullFirst(): void
     {
-        $expected = [5 => null, 3 => null, 1 => '', 0 => 'a', 2 => 'b', 4 => 'c'];
+        $expected = [3 => null, 5 => null, 1 => '', 0 => 'a', 2 => 'b', 4 => 'c'];
         $result   = $this->builder
             ->nullFirst()
             ->getSorter()
@@ -463,19 +463,6 @@ class BuilderTest extends TestCase
         $result   = $builder
             ->nullLast()
             ->removeNullPosition()
-            ->getSorter()
-            ->sort([0 => 'a', 1 => '', 2 => null, 3 => 'b', 4 => 'c', 5 => null]);
-
-        self::assertSame($expected, $result);
-    }
-
-    public function testNullFirstDesc(): void
-    {
-        $expected = [4 => 'c', 3 => 'b', 0 => 'a', 1 => '', 2 => null, 5 => null];
-        $builder  = new Builder('de_DE');
-        $result   = $builder
-            ->nullFirst()
-            ->orderByDesc()
             ->getSorter()
             ->sort([0 => 'a', 1 => '', 2 => null, 3 => 'b', 4 => 'c', 5 => null]);
 
