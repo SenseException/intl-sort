@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Budgegeria\IntlSort\Collator;
 
+/** @internal */
 class Configuration
 {
     public const NULL_VALUES_FIRST = 1;
