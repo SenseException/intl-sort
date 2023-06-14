@@ -49,8 +49,8 @@ class ConfigurableCollatorTest extends TestCase
         $configurableCollator = new ConfigurableCollator($collator, $config);
 
         self::assertSame(
-            $configurableCollator->compare(null, 'a'),
-            -1 * $configurableCollator->compare('a', null),
+            $configurableCollator->compare(null, ''),
+            -1 * $configurableCollator->compare('', null),
         );
     }
 
@@ -63,8 +63,8 @@ class ConfigurableCollatorTest extends TestCase
         $configurableCollator = new ConfigurableCollator($collator, $config);
 
         self::assertSame(
-            $configurableCollator->compare(null, 'a'),
-            -1 * $configurableCollator->compare('a', null),
+            $configurableCollator->compare(null, ''),
+            -1 * $configurableCollator->compare('', null),
         );
     }
 }
