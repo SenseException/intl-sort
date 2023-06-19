@@ -39,32 +39,4 @@ class ConfigurableCollatorTest extends TestCase
         $this->expectException(IntlSortException::class);
         $configurableCollator->compare('', '');
     }
-
-    public function testNullValueFirst(): void
-    {
-        $collator = new Collator('en_US');
-        $config   = new Configuration();
-        $config->setNullableSort(Configuration::NULL_VALUES_FIRST);
-
-        $configurableCollator = new ConfigurableCollator($collator, $config);
-
-        self::assertSame(
-            $configurableCollator->compare(null, ''),
-            -1 * $configurableCollator->compare('', null),
-        );
-    }
-
-    public function testNullValueLast(): void
-    {
-        $collator = new Collator('en_US');
-        $config   = new Configuration();
-        $config->setNullableSort(Configuration::NULL_VALUES_LAST);
-
-        $configurableCollator = new ConfigurableCollator($collator, $config);
-
-        self::assertSame(
-            $configurableCollator->compare(null, ''),
-            -1 * $configurableCollator->compare('', null),
-        );
-    }
 }

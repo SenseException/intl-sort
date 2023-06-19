@@ -436,8 +436,16 @@ class BuilderTest extends TestCase
     public function testNullFirst(): void
     {
         $expected = [3 => null, 5 => null, 1 => '', 0 => 'a', 2 => 'b', 4 => 'c'];
-        $result   = $this->builder
-            ->nullFirst()
+
+        $builder = $this->builder->nullFirst();
+
+        $comparator = $builder->getComparator();
+        self::assertSame(
+            $comparator->compare(null, ''),
+            -1 * $comparator->compare('', null),
+        );
+
+        $result = $builder
             ->getSorter()
             ->sort([0 => 'a', 1 => '', 2 => 'b', 3 => null, 4 => 'c', 5 => null]);
 
@@ -447,9 +455,16 @@ class BuilderTest extends TestCase
     public function testNullLast(): void
     {
         $expected = [1 => '', 0 => 'a', 3 => 'b', 4 => 'c', 2 => null, 5 => null];
-        $builder  = new Builder('de_DE');
-        $result   = $builder
-            ->nullLast()
+
+        $builder = $this->builder->nullLast();
+
+        $comparator = $builder->getComparator();
+        self::assertSame(
+            $comparator->compare(null, ''),
+            -1 * $comparator->compare('', null),
+        );
+
+        $result = $builder
             ->getSorter()
             ->sort([0 => 'a', 1 => '', 2 => null, 3 => 'b', 4 => 'c', 5 => null]);
 
