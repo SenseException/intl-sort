@@ -10,7 +10,7 @@ In its simplest form you create a `Budgegeria\IntlSort\Builder` instance and fet
 sorter object, that will sort your array elements.
 
 ```php
-$sortBuilder = \Budgegeria\IntlSort\Builder::create('de_DE');
+$sortBuilder = Budgegeria\IntlSort\Builder::create('de_DE');
 $sorter = $sortBuilder->getSorter();
 
 $sortedArray = $sorter->sort(['a', 'g', 'A', 'ß', 'ä', 'j', 'z']);
@@ -30,7 +30,7 @@ it should sort your arrays. By default, it will return a sorter object with asce
 it also offers to use a descending order with one further builder method.
 
 ```php
-$sortBuilder = \Budgegeria\IntlSort\Builder::create('de_DE');
+$sortBuilder = Budgegeria\IntlSort\Builder::create('de_DE');
 $sorter = $sortBuilder->orderByDesc()->getSorter();
 
 $sortedArray = $sorter->sort(['a', 'g', 'A', 'ß', 'ä', 'j', 'z']);
@@ -41,7 +41,7 @@ var_dump($sortedArray); // [0 => 'z', 1 => 'ß', 2 => 'j', 3 => 'g', 4 => 'ä', 
 Another way to sort an array is to order the elements by their keys for the given locale.
 
 ```php
-$sortBuilder = \Budgegeria\IntlSort\Builder::create('de_DE');
+$sortBuilder = Budgegeria\IntlSort\Builder::create('de_DE');
 $sorter = $sortBuilder->orderByKeys()->getSorter();
 
 $sortedArray = $sorter->sort(['g' => 1, 'A' => 2, 'ß' => 3, 'ä' => 4, 'z' => 5]);
@@ -54,7 +54,7 @@ match your wished sorting result. In this example we can create a sorter that wi
 elements descending by keys:
 
 ```php
-$sortBuilder = \Budgegeria\IntlSort\Builder::create('de_DE');
+$sortBuilder = Budgegeria\IntlSort\Builder::create('de_DE');
 $sorter = $sortBuilder->orderByKeys()->orderByDesc()->getSorter();
 
 $sortedArray = $sorter->sort(['g' => 1, 'A' => 2, 'ß' => 3, 'ä' => 4, 'z' => 5]);
@@ -74,7 +74,7 @@ version of `strcmp()` of PHP, that follows the [configuration](sorter-builder.md
 through the builder.
 
 ```php
-$sortBuilder = \Budgegeria\IntlSort\Builder::create('de_DE');
+$sortBuilder = Budgegeria\IntlSort\Builder::create('de_DE');
 $comparator = $sortBuilder->getComparator();
 
 $result = $comparator->compare('z', 'ä');
