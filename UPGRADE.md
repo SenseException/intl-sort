@@ -1,3 +1,12 @@
+# Upgrade to 3.0
+
+## The following classes are removed
+
+* `Budgegeria\IntlSort\Comparator\ValueObject`
+* `Budgegeria\IntlSort\ComparatorFactory\ValueObject`
+* `Budgegeria\IntlSort\ComparatorFactory\SimpleCollator`
+* `Budgegeria\IntlSort\Comparator\CollatorConstructor`
+
 # Upgrade to 2.1
 
 ## New Builder config: Omitting array keys on sorted values
