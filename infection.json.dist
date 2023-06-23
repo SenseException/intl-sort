@@ -9,21 +9,6 @@
         "text": "infection-log.txt"
     },
     "mutators": {
-        "@default": true,
-        "IdenticalEqual": {
-            "ignore": [
-                "*"
-            ]
-        },
-        "NotIdenticalNotEqual": {
-            "ignore": [
-                "*"
-            ]
-        },
-        "CastObject": {
-            "ignore": [
-                "Budgegeria\\IntlSort\\Comparator\\ValueObject"
-            ]
-        }
+        "@default": true
     }
 }
