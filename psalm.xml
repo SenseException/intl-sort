@@ -19,4 +19,12 @@
     <plugins>
         <pluginClass class="Psalm\PhpUnitPlugin\Plugin"/>
     </plugins>
+
+    <issueHandlers>
+        <PossiblyUnusedReturnValue>
+            <errorLevel type="suppress">
+                <file name="src/Collator/ConfigurableCollator.php" />
+            </errorLevel>
+        </PossiblyUnusedReturnValue>
+    </issueHandlers>
 </psalm>
