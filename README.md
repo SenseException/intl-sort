@@ -29,6 +29,11 @@ You can install this with [Composer](https://getcomposer.org/).
 composer require senseexception/intl-sort
 ```
 
+### Documentation
+
+Read more about what this library is capable of
+in the [documentation](https://senseexception.github.io/intl-sort).
+
 ### Examples
 
 While PHP's own sort functions don't order the elements in a way that is expected in different
@@ -78,8 +83,7 @@ var_dump($sortedArray); // ['z' => 5, 'ß' => 3, 'g' => 1, 'ä' => 4, 'A' => 2,]
 ```
 
 There are also more configuration possibilities in the builder like setting strength,
-lower case first / upper case first or special french collation. Read more about
-it in the [documentation](https://senseexception.github.io/intl-sort).
+lower case first / upper case first or special french collation.
 
 ## Does it affect [GDPR](https://www.eugdpr.org/) somehow?
 
