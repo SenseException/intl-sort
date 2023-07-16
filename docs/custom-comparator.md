@@ -6,9 +6,9 @@ Collator is injected into the `Comparator` where you can decide which part of va
 should be compared. If the default `Comparator` or one of the [other provided comparators and factories](factory.md)
 don't fit to your needs, you can create your own one.
 
-| Info                                                                                                             |
-|------------------------------------------------------------------------------------------------------------------|
-| intl-sort already supports sorting objects, This example is just for showing how to create a custom `Comparator` |
+| Info                                                                                                                           |
+|--------------------------------------------------------------------------------------------------------------------------------|
+| intl-sort can sort objects with `CallableAccess` in callables. This example is for showing how to create a custom `Comparator` |
 
 Let's use code examples and explain how you can implement a `Comparator` that e.g. can sort an
 array of objects of the same type. We assume your objects are instances of a class named
@@ -107,9 +107,7 @@ class ProductNameComparatorFactory implements Factory
 ```
 
 A factory has also the advantage to inject dependencies into a constructor in case your
-comparator needs more than just a `Collator`. In case you just have a dependency to a 
-`Budgegeria\IntlSort\Collator\Collator`, you can also use the 
-`Budgegeria\IntlSort\ComparatorFactory\SimpleCollator` factory instead of creating your own one.
+comparator needs more than just a `Collator`.
 
 ### Get your comparator into the sorter builder
 
