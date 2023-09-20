@@ -8,12 +8,19 @@ use Budgegeria\IntlSort\Collator\Collator;
 use Budgegeria\IntlSort\Comparator\CallableAccess;
 use PHPUnit\Framework\TestCase;
 
+use function assert;
+use function is_array;
+
 /** @covers \Budgegeria\IntlSort\Comparator\CallableAccess */
 class CallableAccessTest extends TestCase
 {
     public function testDelegateToCollator(): void
     {
-        $func     = static fn (array $value): string => (string) $value['foo'];
+        $func     = static function (mixed $value): string {
+            assert(is_array($value));
+
+            return (string) $value['foo'];
+        };
         $collator = self::createMock(Collator::class);
         $collator->expects(self::once())
             ->method('compare')
