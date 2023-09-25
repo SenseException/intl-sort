@@ -20,17 +20,11 @@ final class ConfigurableCollator implements Collator
     /** @throws IntlSortException */
     public function compare(mixed $value, mixed $comparativeValue): int
     {
-        $nullFirstArg1 = $value === null && $comparativeValue !== null && $this->config->isNullValueFirst();
-        $nullLastArg2  = $value !== null && $comparativeValue === null && $this->config->isNullValueLast();
-
-        if ($nullFirstArg1 || $nullLastArg2) {
+        if ($this->isNullFirst($value, $comparativeValue)) {
             return -1;
         }
 
-        $nullLastArg1  = $value === null && $comparativeValue !== null && $this->config->isNullValueLast();
-        $nullFirstArg2 = $value !== null && $comparativeValue === null && $this->config->isNullValueFirst();
-
-        if ($nullLastArg1 || $nullFirstArg2) {
+        if ($this->isNullLast($value, $comparativeValue)) {
             return 1;
         }
 
@@ -47,5 +41,21 @@ final class ConfigurableCollator implements Collator
         }
 
         return $compared;
+    }
+
+    private function isNullFirst(mixed $value, mixed $comparativeValue): bool
+    {
+        $nullFirstArg1 = $value === null && $comparativeValue !== null && $this->config->isNullValueFirst();
+        $nullLastArg2  = $value !== null && $comparativeValue === null && $this->config->isNullValueLast();
+
+        return $nullFirstArg1 || $nullLastArg2;
+    }
+
+    private function isNullLast(mixed $value, mixed $comparativeValue): bool
+    {
+        $nullLastArg1  = $value === null && $comparativeValue !== null && $this->config->isNullValueLast();
+        $nullFirstArg2 = $value !== null && $comparativeValue === null && $this->config->isNullValueFirst();
+
+        return $nullLastArg1 || $nullFirstArg2;
     }
 }
