@@ -16,7 +16,7 @@ use Budgegeria\IntlSort\Sorter\Omit;
 use Budgegeria\IntlSort\Sorter\Sorter;
 use Collator;
 
-class Builder
+final class Builder
 {
     private readonly Collator $collator;
 
