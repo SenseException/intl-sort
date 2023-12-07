@@ -14,7 +14,7 @@ class CallableAccessTest extends TestCase
     public function testCreateForMethod(): void
     {
         $func       = static fn (mixed $value): string => (string) $value;
-        $collator   = $this->createStub(Collator::class);
+        $collator   = self::createStub(Collator::class);
         $factory    = new Factory($func);
         $comparator = new CallableAccess($collator, $func);
 

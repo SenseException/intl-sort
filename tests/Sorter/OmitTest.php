@@ -38,7 +38,7 @@ class OmitTest extends TestCase
 
     public function testSortThrowsException(): void
     {
-        $sorter = $this->createStub(Sorter::class);
+        $sorter = self::createStub(Sorter::class);
         $sorter->method('sort')
             ->willThrowException(IntlSortException::errorOnSort('error'));
 

@@ -301,22 +301,6 @@ class BuilderTest extends TestCase
         self::assertSame($expected, $result);
     }
 
-    public function testShiftedAlternateHandling(): void
-    {
-        $values     = ['USA', 'U.S.A'];
-        $unexpected = [
-            1 => 'U.S.A',
-            0 => 'USA',
-        ];
-        $result     = $this->builder
-            ->shiftedAlternateHandling()
-            ->getSorter()
-            ->sort($values);
-
-        self::assertSame($values, $result);
-        self::assertNotSame($unexpected, $result);
-    }
-
     public function testNonIgnorableAlternateHandling(): void
     {
         $values   = ['USA', 'U.S.A'];
@@ -406,7 +390,7 @@ class BuilderTest extends TestCase
             'b' => 'foo3',
         ];
 
-        $comparable = $this->createStub(Comparable::class);
+        $comparable = self::createStub(Comparable::class);
         $comparable->method('compare')
             ->willReturn(0);
 

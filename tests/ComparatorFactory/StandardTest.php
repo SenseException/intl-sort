@@ -15,6 +15,6 @@ class StandardTest extends TestCase
     {
         $factory = new Standard();
 
-        self::assertInstanceOf(Comparator::class, $factory->create($this->createStub(Collator::class)));
+        self::assertInstanceOf(Comparator::class, $factory->create(self::createStub(Collator::class)));
     }
 }

@@ -13,7 +13,7 @@ class DescTest extends TestCase
 {
     public function testSort(): void
     {
-        $innerSorter = $this->createStub(Sorter::class);
+        $innerSorter = self::createStub(Sorter::class);
         $innerSorter->method('sort')
             ->willReturn([3 => 1, 2 => 'a', 0 => 'b', 1 => 'c']);
 
@@ -24,7 +24,7 @@ class DescTest extends TestCase
 
     public function testSortThrowsException(): void
     {
-        $innerSorter = $this->createStub(Sorter::class);
+        $innerSorter = self::createStub(Sorter::class);
         $innerSorter->method('sort')
             ->willThrowException(new IntlSortException('test'));
 

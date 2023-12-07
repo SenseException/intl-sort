@@ -50,7 +50,7 @@ class KeyTest extends TestCase
 
     public function testSortThrowsException(): void
     {
-        $comparator = $this->createStub(Comparator::class);
+        $comparator = self::createStub(Comparator::class);
         $comparator->method('compare')
             ->willThrowException(IntlSortException::errorOnSort('error'));
 

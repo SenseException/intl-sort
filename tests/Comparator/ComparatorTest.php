@@ -56,7 +56,7 @@ class ComparatorTest extends TestCase
 
     public function testThrowsIntlException(): void
     {
-        $collator = $this->createStub(IntlSortCollator::class);
+        $collator = self::createStub(IntlSortCollator::class);
         $collator->method('compare')
             ->willThrowException(new IntlSortException('error'));
 
