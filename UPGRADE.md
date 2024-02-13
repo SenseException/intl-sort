@@ -1,5 +1,9 @@
 # Upgrade to 3.0
 
+## Drop support of PHP 8.1
+
+You need to update your PHP version.
+
 ## The following classes are removed
 
 * `Budgegeria\IntlSort\Comparator\ValueObject`
