@@ -6,6 +6,7 @@ namespace Budgegeria\IntlSort\Comparator;
 
 use Budgegeria\IntlSort\Collator\Collator;
 use Closure;
+use Override;
 
 class CallableAccess implements Comparable
 {
@@ -18,6 +19,7 @@ class CallableAccess implements Comparable
         $this->func = $func(...);
     }
 
+    #[Override]
     public function compare(mixed $value, mixed $comparativeValue): int
     {
         return $this->collator->compare(

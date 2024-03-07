@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Budgegeria\IntlSort\Sorter;
 
+use Override;
+
 use function array_values;
 
 final class Omit implements Sorter
@@ -13,6 +15,7 @@ final class Omit implements Sorter
     }
 
     /** @inheritdoc */
+    #[Override]
     public function sort(array $values): array
     {
         $values = $this->sorter->sort($values);

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Budgegeria\IntlSort\Sorter;
 
 use Budgegeria\IntlSort\Comparator\Comparable;
+use Override;
 
 use function uasort;
 
@@ -17,6 +18,7 @@ final class Asc implements Sorter
     /**
      * {@inheritDoc}
      */
+    #[Override]
     public function sort(array $values): array
     {
         $comparable = $this->comparable;

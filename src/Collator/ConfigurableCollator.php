@@ -7,6 +7,7 @@ namespace Budgegeria\IntlSort\Collator;
 use Budgegeria\IntlSort\Exception\IntlSortException;
 use Collator as IntlCollator;
 use IntlException;
+use Override;
 
 use function assert;
 use function is_int;
@@ -18,6 +19,7 @@ final class ConfigurableCollator implements Collator
     }
 
     /** @throws IntlSortException */
+    #[Override]
     public function compare(mixed $value, mixed $comparativeValue): int
     {
         if ($this->isNullFirst($value, $comparativeValue)) {
