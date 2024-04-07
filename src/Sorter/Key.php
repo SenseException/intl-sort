@@ -24,7 +24,7 @@ final class Key implements Sorter
         $comparable = $this->comparable;
         uksort(
             $values,
-            static fn (mixed $first, mixed $second): int => $comparable->compare($first, $second)
+            static fn (mixed $first, mixed $second): int => $comparable->compare($first, $second),
         );
 
         return $values;

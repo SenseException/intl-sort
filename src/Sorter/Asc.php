@@ -24,7 +24,7 @@ final class Asc implements Sorter
         $comparable = $this->comparable;
         uasort(
             $values,
-            static fn (mixed $first, mixed $second): int => $comparable->compare($first, $second)
+            static fn (mixed $first, mixed $second): int => $comparable->compare($first, $second),
         );
 
         return $values;
