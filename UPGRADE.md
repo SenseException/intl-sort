@@ -11,6 +11,20 @@ You need to update your PHP version.
 * `Budgegeria\IntlSort\ComparatorFactory\SimpleCollator`
 * `Budgegeria\IntlSort\Comparator\CollatorConstructor`
 
+## The comparator factory constructor argument of the Builder class is mandatory now
+
+Either use the standard comparator
+
+``` php
+$builder = new Builder('en_US', new Standard());
+```
+
+or the already existing static method
+
+``` php
+$builder = Builder::create('en_US');
+```
+
 # Upgrade to 2.1
 
 ## New Builder config: Omitting array keys on sorted values

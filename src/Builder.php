@@ -24,17 +24,14 @@ final class Builder
 
     private bool $isKeySort = false;
 
-    private readonly Factory $comparatorFactory;
-
     private bool $keepKeys = true;
 
     private readonly Configuration $configuration;
 
-    public function __construct(string $locale, Factory|null $comparatorFactory = null)
+    public function __construct(string $locale, private readonly Factory $comparatorFactory)
     {
-        $this->collator          = new Collator($locale);
-        $this->configuration     = new Configuration();
-        $this->comparatorFactory = $comparatorFactory ?? new Standard();
+        $this->collator      = new Collator($locale);
+        $this->configuration = new Configuration();
     }
 
     public static function create(string $locale): self

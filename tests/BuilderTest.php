@@ -58,7 +58,7 @@ class BuilderTest extends TestCase
     public function testOmitKeysOnSortedValues(): void
     {
         $expected = [1, 2, 3];
-        $builder  = new Builder('de_DE');
+        $builder  = Builder::create('de_DE');
         $result   = $builder->omitKeys()
             ->getSorter()
             ->sort([3, 1, 2]);
@@ -69,7 +69,7 @@ class BuilderTest extends TestCase
     public function testKeepKeysOnSortedValues(): void
     {
         $expected = [1 => 1, 2 => 2, 0 => 3];
-        $builder  = new Builder('de_DE');
+        $builder  = Builder::create('de_DE');
         $result   = $builder->omitKeys()
             ->keepKeys()
             ->getSorter()
@@ -458,7 +458,7 @@ class BuilderTest extends TestCase
     public function testRemoveNullableSort(): void
     {
         $expected = [1 => '', 2 => null, 5 => null, 0 => 'a', 3 => 'b', 4 => 'c'];
-        $builder  = new Builder('de_DE');
+        $builder  = Builder::create('de_DE');
         $result   = $builder
             ->nullLast()
             ->removeNullPosition()
