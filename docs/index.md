@@ -31,7 +31,8 @@ it also offers to use a descending order with one further builder method.
 
 ```php
 $sortBuilder = Budgegeria\IntlSort\Builder::create('de_DE');
-$sorter = $sortBuilder->orderByDesc()->getSorter();
+$sorter = $sortBuilder->orderByDesc()
+    ->getSorter();
 
 $sortedArray = $sorter->sort(['a', 'g', 'A', 'ß', 'ä', 'j', 'z']);
 
@@ -42,7 +43,8 @@ Another way to sort an array is to order the elements by their keys for the give
 
 ```php
 $sortBuilder = Budgegeria\IntlSort\Builder::create('de_DE');
-$sorter = $sortBuilder->orderByKeys()->getSorter();
+$sorter = $sortBuilder->orderByKeys()
+    ->getSorter();
 
 $sortedArray = $sorter->sort(['g' => 1, 'A' => 2, 'ß' => 3, 'ä' => 4, 'z' => 5]);
 
@@ -55,7 +57,9 @@ elements descending by keys:
 
 ```php
 $sortBuilder = Budgegeria\IntlSort\Builder::create('de_DE');
-$sorter = $sortBuilder->orderByKeys()->orderByDesc()->getSorter();
+$sorter = $sortBuilder->orderByKeys()
+    ->orderByDesc()
+    ->getSorter();
 
 $sortedArray = $sorter->sort(['g' => 1, 'A' => 2, 'ß' => 3, 'ä' => 4, 'z' => 5]);
 
