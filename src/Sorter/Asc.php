@@ -21,10 +21,9 @@ final class Asc implements Sorter
     #[Override]
     public function sort(array $values): array
     {
-        $comparable = $this->comparable;
         uasort(
             $values,
-            static fn (mixed $first, mixed $second): int => $comparable->compare($first, $second),
+            fn (mixed $first, mixed $second): int => $this->comparable->compare($first, $second),
         );
 
         return $values;
