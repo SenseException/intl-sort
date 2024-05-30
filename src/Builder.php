@@ -244,11 +244,7 @@ final class Builder
     public function getSorter(): Sorter
     {
         $comparator = $this->getComparator();
-        if ($this->isKeySort) {
-            $sorter = new Key($comparator);
-        } else {
-            $sorter = new Asc($comparator);
-        }
+        $sorter     = $this->isKeySort ? new Key($comparator) : new Asc($comparator);
 
         if (! $this->isAsc) {
             $sorter = new Desc($sorter);
