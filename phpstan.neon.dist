@@ -12,5 +12,4 @@ parameters:
                 - tests/ComparatorFactory/CallableAccessTest.php
 
 includes:
-    - vendor/phpstan/phpstan-phpunit/extension.neon
     - vendor/phpstan/phpstan-strict-rules/rules.neon
