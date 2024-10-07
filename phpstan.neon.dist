@@ -4,12 +4,15 @@ parameters:
         - "%currentWorkingDirectory%/src/"
         - "%currentWorkingDirectory%/tests/"
 
+
     ignoreErrors:
         -
             message: '#Cannot cast mixed to string\.#'
             paths:
                 - src/Collator/ConfigurableCollator.php
                 - tests/ComparatorFactory/CallableAccessTest.php
+                - tests/Comparator/CallableAccessTest.php
 
 includes:
     - vendor/phpstan/phpstan-strict-rules/rules.neon
+    - phar://phpstan.phar/conf/bleedingEdge.neon
