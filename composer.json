@@ -21,7 +21,7 @@
     "phpunit/phpunit": "^10.5",
     "psalm/plugin-phpunit": "^0.19.2",
     "vimeo/psalm": "^6.0",
-    "doctrine/coding-standard": "^12.0",
+    "doctrine/coding-standard": "^13.0",
     "phpstan/phpstan-strict-rules": "^2.0",
     "phpstan/phpstan-deprecation-rules": "^2.0"
   },
