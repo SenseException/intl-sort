@@ -16,9 +16,9 @@
     "ext-intl": "*"
   },
   "require-dev": {
-    "infection/infection": "^0.29.10",
+    "infection/infection": "^0.29.14",
     "phpstan/phpstan": "^2.1",
-    "phpunit/phpunit": "^10.5",
+    "phpunit/phpunit": "^11.5",
     "doctrine/coding-standard": "^13.0",
     "phpstan/phpstan-strict-rules": "^2.0",
     "phpstan/phpstan-deprecation-rules": "^2.0"
