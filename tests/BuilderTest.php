@@ -9,6 +9,7 @@ use Budgegeria\IntlSort\Collator\Collator;
 use Budgegeria\IntlSort\Comparator\Comparable;
 use Budgegeria\IntlSort\ComparatorFactory\Factory;
 use Budgegeria\IntlSort\Sorter\Sorter;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 class BuilderTest extends TestCase
@@ -113,9 +114,8 @@ class BuilderTest extends TestCase
 
     /**
      * @param string[] $values
-     *
-     * @dataProvider provideDisabledCaseLevelValues
      */
+    #[DataProvider('provideDisabledCaseLevelValues')]
     public function testDisableCaseLevel(array $values): void
     {
         $result = $this->builder
@@ -137,9 +137,8 @@ class BuilderTest extends TestCase
 
     /**
      * @param string[] $values
-     *
-     * @dataProvider providePrimaryStrengthValues
      */
+    #[DataProvider('providePrimaryStrengthValues')]
     public function testPrimaryStrength(array $values): void
     {
         $result = $this->builder
@@ -159,9 +158,8 @@ class BuilderTest extends TestCase
 
     /**
      * @param string[] $values
-     *
-     * @dataProvider provideSecondaryStrengthValues
      */
+    #[DataProvider('provideSecondaryStrengthValues')]
     public function testSecondaryStrength(array $values): void
     {
         $result = $this->builder
@@ -181,9 +179,8 @@ class BuilderTest extends TestCase
 
     /**
      * @param string[] $values
-     *
-     * @dataProvider provideTertiaryStrengthValues
      */
+    #[DataProvider('provideTertiaryStrengthValues')]
     public function testTertiaryStrength(array $values): void
     {
         $result = $this->builder
@@ -206,9 +203,8 @@ class BuilderTest extends TestCase
     /**
      * @param string[] $values
      * @param string[] $expected
-     *
-     * @dataProvider provideQuarternaryStrengthValues
      */
+    #[DataProvider('provideQuarternaryStrengthValues')]
     public function testQuarternaryStrength(array $values, array $expected): void
     {
         $result = $this->builder
