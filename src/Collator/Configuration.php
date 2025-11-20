@@ -7,8 +7,8 @@ namespace Budgegeria\IntlSort\Collator;
 /** @internal */
 class Configuration
 {
-    public const NULL_VALUES_FIRST = 1;
-    public const NULL_VALUES_LAST  = 2;
+    public const int NULL_VALUES_FIRST = 1;
+    public const int NULL_VALUES_LAST  = 2;
 
     /** @phpstan-var self::NULL_VALUES_*|null */
     private int|null $nullableSort = null;

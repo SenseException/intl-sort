@@ -112,9 +112,7 @@ class BuilderTest extends TestCase
         self::assertSame($expected, $result);
     }
 
-    /**
-     * @param string[] $values
-     */
+    /** @param string[] $values */
     #[DataProvider('provideDisabledCaseLevelValues')]
     public function testDisableCaseLevel(array $values): void
     {
@@ -135,9 +133,7 @@ class BuilderTest extends TestCase
         yield [['B', 'b', 'c']];
     }
 
-    /**
-     * @param string[] $values
-     */
+    /** @param string[] $values */
     #[DataProvider('providePrimaryStrengthValues')]
     public function testPrimaryStrength(array $values): void
     {
@@ -156,9 +152,7 @@ class BuilderTest extends TestCase
         yield [['côte', 'côté', 'Côte', 'd']];
     }
 
-    /**
-     * @param string[] $values
-     */
+    /** @param string[] $values */
     #[DataProvider('provideSecondaryStrengthValues')]
     public function testSecondaryStrength(array $values): void
     {
@@ -177,9 +171,7 @@ class BuilderTest extends TestCase
         yield [['Role', 'role', 'rôle']];
     }
 
-    /**
-     * @param string[] $values
-     */
+    /** @param string[] $values */
     #[DataProvider('provideTertiaryStrengthValues')]
     public function testTertiaryStrength(array $values): void
     {
